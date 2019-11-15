@@ -1,0 +1,6 @@
+E:\conv\lib\bin\Debug\lib.dll
+E:\conv\lib\bin\Debug\lib.pdb
+E:\conv\lib\bin\Debug\Bass.Net.dll
+E:\conv\lib\obj\Debug\ResolveAssemblyReference.cache
+E:\conv\lib\obj\Debug\lib.dll
+E:\conv\lib\obj\Debug\lib.pdb

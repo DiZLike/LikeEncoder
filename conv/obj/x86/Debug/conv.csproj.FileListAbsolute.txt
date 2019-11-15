@@ -1,0 +1,12 @@
+E:\conv\conv\bin\Debug\conv.exe
+E:\conv\conv\bin\Debug\conv.pdb
+E:\conv\conv\bin\Debug\lib.dll
+E:\conv\conv\bin\Debug\lib.pdb
+E:\conv\conv\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\conv\conv\obj\x86\Debug\conv.Form1.resources
+E:\conv\conv\obj\x86\Debug\conv.Properties.Resources.resources
+E:\conv\conv\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\conv\conv\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\conv\conv\obj\x86\Debug\conv.exe
+E:\conv\conv\obj\x86\Debug\conv.pdb
+E:\conv\conv\bin\Debug\Bass.Net.dll
