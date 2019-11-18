@@ -56,7 +56,7 @@
             this.файлToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(642, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(704, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -80,7 +80,7 @@
             this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(642, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(704, 25);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -111,7 +111,7 @@
             this.borderPanel1.Controls.Add(this.borderPanel2);
             this.borderPanel1.Location = new System.Drawing.Point(5, 53);
             this.borderPanel1.Name = "borderPanel1";
-            this.borderPanel1.Size = new System.Drawing.Size(633, 390);
+            this.borderPanel1.Size = new System.Drawing.Size(695, 390);
             this.borderPanel1.TabIndex = 5;
             // 
             // myButton2
@@ -127,7 +127,7 @@
             // 
             this.myButton1.Location = new System.Drawing.Point(467, 76);
             this.myButton1.Name = "myButton1";
-            this.myButton1.Size = new System.Drawing.Size(158, 26);
+            this.myButton1.Size = new System.Drawing.Size(220, 26);
             this.myButton1.TabIndex = 9;
             this.myButton1.Title = "Старт";
             this.myButton1.Click += new System.EventHandler(this.button1_Click_1);
@@ -153,6 +153,7 @@
             this.btnTextBox2.Name = "btnTextBox2";
             this.btnTextBox2.Size = new System.Drawing.Size(355, 21);
             this.btnTextBox2.TabIndex = 7;
+            this.btnTextBox2.Title = "";
             // 
             // label2
             // 
@@ -171,7 +172,7 @@
             this.borderComboBox1.FormattingEnabled = true;
             this.borderComboBox1.Location = new System.Drawing.Point(466, 22);
             this.borderComboBox1.Name = "borderComboBox1";
-            this.borderComboBox1.Size = new System.Drawing.Size(159, 21);
+            this.borderComboBox1.Size = new System.Drawing.Size(221, 21);
             this.borderComboBox1.TabIndex = 4;
             // 
             // btnTextBox1
@@ -181,8 +182,9 @@
             this.btnTextBox1.MaximumSize = new System.Drawing.Size(400, 21);
             this.btnTextBox1.Name = "btnTextBox1";
             this.btnTextBox1.ReadOnly = true;
-            this.btnTextBox1.Size = new System.Drawing.Size(158, 21);
+            this.btnTextBox1.Size = new System.Drawing.Size(220, 21);
             this.btnTextBox1.TabIndex = 3;
+            this.btnTextBox1.Title = "";
             this.btnTextBox1.Click += new System.EventHandler(this.btnTextBox1_Click);
             // 
             // label1
@@ -219,7 +221,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 447);
+            this.ClientSize = new System.Drawing.Size(704, 447);
             this.Controls.Add(this.borderPanel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);

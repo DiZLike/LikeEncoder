@@ -12,16 +12,50 @@ namespace lib.Encoders
         public bool Music { get; set; }
         public bool Speech { get; set; }
 
+        private static string CFG = @"encoders\opus.cfg";
+
+        public static string Format
+        {
+            get
+            {
+                string ch = String.Empty;
+                if (BassApp.param["channel"].ToInt() == 0)
+                    ch = "Stereo";
+                else
+                    ch = "Mono";
+                return string.Format(@"{0} kBit / {1} frame / {2}",
+                    BassApp.param["bitrate"],
+                    BassApp.param["framesize"],
+                    ch);
+            }
+        }
+
+        public static void LoadParams()
+        {
+            Cfg cfg = new Cfg(CFG);
+            LoadParameter(cfg, "bitrate");
+            LoadParameter(cfg, "framesize");
+            LoadParameter(cfg, "quality");
+            LoadParameter(cfg, "channel");
+            LoadParameter(cfg, "music");
+            LoadParameter(cfg, "speech");
+
+        }
+        public static void SaveParam()
+        {
+            Cfg cfg = new Cfg(CFG);
+            SaveParameter(cfg, "bitrate");
+            SaveParameter(cfg, "framesize");
+            SaveParameter(cfg, "quality");
+            SaveParameter(cfg, "channel");
+            SaveParameter(cfg, "music");
+            SaveParameter(cfg, "speech");
+        }
+
         public void Start(string sourceAudio, string exitAudio, int index, ProgressHandler onProgress)
         {
             this.onProgress = onProgress;
             this.index = index;
-            /*
-            string cmd = string.Format("encoders\\opus\\opusenc --bitrate {0} --framesize {1} --comp {2} - \"{3}.opus\"",
-                Bitrate,
-                Framesize,
-                Quality,
-                exitAudio);*/
             string cmd = String.Empty;
             StringBuilder sb = new StringBuilder();
             sb.Append("encoders\\opus\\opusenc ");

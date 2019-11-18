@@ -7,47 +7,44 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using lib;
+using lib.Encoders;
 
 namespace conv.Wnds
 {
     public partial class OpusWnd : Form
     {
-        private object[] param;
-        private Cfg cfg = new Cfg(Consts.OPUS_CFG);
+        //private Cfg cfg = new Cfg(Cfg.OPUS_CFG);
 
-        public OpusWnd(ref object[] param)
+        public OpusWnd()
         {
             InitializeComponent();
-            this.param = param;
             frequency.SelectedIndex = 0;
             frequency.Enabled = false;
+            AudioOpus.LoadParams();
 
-            bitrate.Text = cfg.Read("bitrate");
-            frame.Text = cfg.Read("frame");
-            quality.Text = cfg.Read("quality");
-            channel.SelectedIndex = Convert.ToInt32(cfg.Read("channel"));
-            if (Convert.ToBoolean(cfg.Read("music")))
+            bitrate.Text = BassApp.param["bitrate"].ToString();
+            frame.Text = BassApp.param["framesize"].ToString();
+            quality.Text = BassApp.param["quality"].ToString();
+            channel.SelectedIndex = BassApp.param["channel"].ToInt();
+            if (BassApp.param["music"].ToBool())
                 music.Checked = true;
-            if (Convert.ToBoolean(cfg.Read("speech")))
+            if (BassApp.param["speech"].ToBool())
                 speech.Checked = true;
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            param[0] = bitrate.Text;
-            param[1] = frame.Text;
-            param[3] = quality.Text;
-            param[4] = channel.SelectedIndex;
-            param[5] = music.Checked;
-            param[6] = speech.Checked;
 
-            cfg.Write("bitrate", param[0]);
-            cfg.Write("frame", param[1]);
-            cfg.Write("quality", param[3]);
-            cfg.Write("channel", param[4]);
-            cfg.Write("music", param[5]);
-            cfg.Write("speech", param[6]);
+            BassApp.param["bitrate"] = bitrate.Text;
+            BassApp.param["framesize"] = frame.Text;
+            BassApp.param["quality"] = quality.Text;
+            BassApp.param["channel"] = channel.SelectedIndex;
+            BassApp.param["music"] = music.Checked;
+            BassApp.param["speech"] = speech.Checked;
+
+            AudioOpus.SaveParam();
+            
             Close();
         }
 

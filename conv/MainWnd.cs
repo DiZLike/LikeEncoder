@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using lib;
 using System.IO;
 using conv.Wnds;
+using conv;
+using lib.Encoders;
 
 namespace conv
 {
@@ -17,30 +19,17 @@ namespace conv
         private BassApp app;
         private OpenFileDialog openFileDialog;
 
-        /*
-         *      0: битрейт
-         *      1: фреймы
-         *      2: частота
-         *      3: качество алгоритма
-         *      4: каналы
-         *      5: Music
-         *      6: Speech
-         * */
-        private object[] param = new object[20];
-
         public MainWnd()
         {
             InitializeComponent();
-            //Control.CheckForIllegalCrossThreadCalls = false;
 
             CreateDialogs();
             app = new BassApp(this.Handle, OnError, OnProgress);
-            //app.aOpus.OnProgress += new AudioEncoder.EncoderEventHandler(aOpus_OnProgress);
 
             var encs = File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\encoders\encoders.txt");
             foreach (var item in encs)
                 borderComboBox1.Items.Add(item);
-            borderComboBox1.SelectedIndex = 0;
+            LoadDefaultEncoder();
         }
 
         private void CreateDialogs()
@@ -58,6 +47,23 @@ namespace conv
         private void OnProgress(int index, int progress)
         {
             trackPanel1.Invoke(new Action<int>((i) => trackPanel1.Tracks[index].EncodingProgress = i), progress);
+            if (progress == 100)
+                progress1.Invoke(new Action(() => progress1.Value++));
+        }
+
+        private void LoadDefaultEncoder()
+        {
+            var cfg = new Cfg(Cfg.ENC_CFG);
+            int defenc = cfg.Read("default_encoder").ToInt();
+            borderComboBox1.SelectedIndex = defenc;
+            //string encname = borderComboBox1.Items[defenc.ToInt()].ToString().ToLower();
+            switch ((EncoderType)defenc)
+            {
+                case EncoderType.OPUS:
+                    AudioOpus.LoadParams();
+                    btnTextBox1.Title = AudioOpus.Format;
+                    break;
+            }
         }
 
         private void AddTracks()
@@ -70,13 +76,8 @@ namespace conv
                 trackPanel1.AddTrack(track,
                     Path.GetFileNameWithoutExtension(track), "YUI");
             }
-        }
 
-        /*
-        void aOpus_OnProgress(object sender, EncoderEventArgs e)
-        {
-            //progress1.Invoke(new Action<float>((f) => progress1.Value = (int)f), e.Progress);
-        }*/
+        }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
@@ -88,22 +89,31 @@ namespace conv
             List<string> tracks = new List<string>();
             foreach (var item in trackPanel1.Tracks)
 		        tracks.Add(item.Path);
-            app.Start((EncoderType)borderComboBox1.SelectedIndex, param, tracks.ToArray(), AppDomain.CurrentDomain.BaseDirectory);
+            progress1.Value = 0;
+            progress1.Maximum = tracks.Count;
+            app.Start((EncoderType)borderComboBox1.SelectedIndex, tracks.ToArray(), AppDomain.CurrentDomain.BaseDirectory);
         }
 
         private void btnTextBox1_Click(object sender, EventArgs e)
         {
+            Form formatForm;
             switch (borderComboBox1.SelectedIndex)
             {
                 case 0:
-                    new OpusWnd(ref param).ShowDialog();
+                    formatForm = new OpusWnd();
+                    break;
+                default:
+                    formatForm = new Form();
                     break;
             }
+            formatForm.FormClosed += (s, ev) => btnTextBox1.Title = AudioOpus.Format;
+            formatForm.ShowDialog();
         }
 
         private void myButton2_Click(object sender, EventArgs e)
         {
-            
+            object f = "1";
+            f.ToBool();
         }
     }
 }

@@ -31,9 +31,11 @@ namespace lib
         private List<Track> trackList;
         private EncoderType encoderType;
         private string outFolder;
-        private object[] param;
+        //private object[] param;
 
         //public AudioOpus aOpus;
+        public static ParamArray param = new ParamArray();
+        public int TrackCount { get { return trackList.Count; } }
 
         public BassApp(IntPtr handle, ErrorHandler onError, ProgressHandler onProgress)
         {
@@ -42,6 +44,11 @@ namespace lib
             this.onProgress = onProgress;
             Init();
             //aOpus = new AudioOpus();
+        }
+
+        public void LoadParam()
+        {
+            var par = File.ReadAllLines(Cfg.PARAM_TXT);
         }
 
         private void Init()
@@ -63,10 +70,9 @@ namespace lib
                 encodingThread[i] = new Thread(new ThreadStart(BeginEncoding));
         }
 
-        public void Start(EncoderType encoderType, object[] param, string[] tracks, string outputFolder)
+        public void Start(EncoderType encoderType, string[] tracks, string outputFolder)
         {
             this.encoderType = encoderType;
-            this.param = param;
             this.outFolder = outputFolder;
             trackList = new List<Track>();
 
@@ -101,6 +107,21 @@ namespace lib
                 
                 trackList[i].Complete = true;
             }
+            CheckAllComplete();
+        }
+
+        private void CheckAllComplete()
+        {
+            foreach (var item in trackList)
+            {
+                if (!item.Started || !item.Complete)
+                    return;
+            }
+            for (int i = 0; i < trackList.Count; i++)
+            {
+                trackList[i].Complete = false;
+                trackList[i].Started = false;
+            }
         }
 
         private bool CheckComplite()
@@ -116,12 +137,13 @@ namespace lib
         private void StartOpus(int index)
         {
             var opus = new AudioOpus();
-            opus.Bitrate = Convert.ToInt32(param[0]);
-            opus.Framesize = param[1].ToString();
-            opus.Quality = Convert.ToInt32(param[3]);
-            opus.Channels = (int)param[4];
-            opus.Music = (bool)param[5];
-            opus.Speech = (bool)param[6];
+
+            opus.Bitrate = param["bitrate"].ToInt();
+            opus.Framesize = param["framesize"].ToString();
+            opus.Quality = param["quality"].ToInt();
+            opus.Channels = param["channels"].ToInt();
+            opus.Music = param["music"].ToBool();
+            opus.Speech = param["speech"].ToBool();
 
             string of = Path.GetFileNameWithoutExtension(trackList[index].Name);
             opus.Start(trackList[index].Name, outFolder + of, index, onProgress);

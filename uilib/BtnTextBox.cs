@@ -13,6 +13,11 @@ namespace uilib
     {
         [DefaultValue(typeof(bool), "false")]
         public bool ReadOnly { get; set; }
+        public string Title
+        {
+            get { return textBox1.Text; }
+            set { textBox1.Text = value; }
+        }
 
         private Color defaultColor;
 

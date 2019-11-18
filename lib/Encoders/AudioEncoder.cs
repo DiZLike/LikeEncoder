@@ -34,6 +34,15 @@ namespace lib
         protected int index;
         protected int stream;
 
+        protected static void LoadParameter(Cfg cfg, string param)
+        {
+            BassApp.param[param] = cfg.Read(param);
+        }
+        protected static void SaveParameter(Cfg cfg, string param)
+        {
+            cfg.Write(param, BassApp.param[param]);
+        }
+
         protected void CreateStream(string file, string cmd, BASSEncode encodeFlags)
         {
             stream = Bass.BASS_StreamCreateFile(file, 0, 0, BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_STREAM_DECODE);

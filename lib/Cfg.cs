@@ -8,6 +8,9 @@ namespace lib
 {
     public class Cfg
     {
+        public static string ENC_CFG = @"encoders\enc.cfg";
+        public static string PARAM_TXT = @"encoders\param.txt";
+
         private string file;
         private string badeDirectory = AppDomain.CurrentDomain.BaseDirectory + @"\";
         private List<string> all = new List<string>();
