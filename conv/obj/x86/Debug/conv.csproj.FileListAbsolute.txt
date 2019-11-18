@@ -13,3 +13,17 @@ E:\conv\conv\bin\Debug\uilib.dll
 E:\conv\conv\bin\Debug\uilib.pdb
 E:\conv\conv\obj\x86\Debug\conv.MainWnd.resources
 E:\conv\conv\obj\x86\Debug\conv.Wnds.OpusWnd.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\obj\x86\Debug\conv.exe
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\obj\x86\Debug\conv.pdb
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\conv.exe
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\conv.pdb
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\lib.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\uilib.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\Bass.Net.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\lib.pdb
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\uilib.pdb
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\obj\x86\Debug\conv.csprojResolveAssemblyReference.cache
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\obj\x86\Debug\conv.MainWnd.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\obj\x86\Debug\conv.Properties.Resources.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\obj\x86\Debug\conv.Wnds.OpusWnd.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\obj\x86\Debug\conv.csproj.GenerateResource.Cache

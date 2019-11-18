@@ -4,3 +4,9 @@ E:\conv\lib\bin\Debug\Bass.Net.dll
 E:\conv\lib\obj\Debug\ResolveAssemblyReference.cache
 E:\conv\lib\obj\Debug\lib.dll
 E:\conv\lib\obj\Debug\lib.pdb
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\bin\Debug\lib.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\bin\Debug\lib.pdb
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\bin\Debug\Bass.Net.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\obj\Debug\lib.csprojResolveAssemblyReference.cache
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\obj\Debug\lib.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\obj\Debug\lib.pdb

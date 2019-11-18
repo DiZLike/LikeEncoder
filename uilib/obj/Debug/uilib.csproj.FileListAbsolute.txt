@@ -12,3 +12,15 @@ E:\conv\uilib\obj\Debug\uilib.BtnTextBox.resources
 E:\conv\uilib\obj\Debug\uilib.BorderTextBox.resources
 E:\conv\uilib\obj\Debug\uilib.Progress.resources
 E:\conv\uilib\obj\Debug\uilib.MyButton.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\bin\Debug\uilib.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\bin\Debug\uilib.pdb
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.BorderTextBox.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.BtnTextBox.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.MyButton.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.Progress.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.Properties.Resources.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.Track.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.TrackPanel.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.csproj.GenerateResource.Cache
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.pdb

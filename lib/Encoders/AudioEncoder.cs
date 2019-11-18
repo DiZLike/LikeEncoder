@@ -24,6 +24,8 @@ namespace lib
     public abstract class AudioEncoder
     {
         public int Bitrate { get; set; }
+        public int Quality { get; set; }
+        public int Channels { get; set; }
 
         /*
         public delegate void EncoderEventHandler(object sender, EncoderEventArgs e);
@@ -47,7 +49,7 @@ namespace lib
                 long length = Bass.BASS_ChannelGetLength(stream);
                 long pos = Bass.BASS_ChannelGetPosition(stream);
                 int progress = (int)((float)pos / (float)length * 100f);
-                if (progress % 2 == 0)
+                if (progress % 5 == 0)
                     onProgress(index, progress);
             }
         }

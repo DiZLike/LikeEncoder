@@ -1,2 +1,2 @@
-opusdec 01.opus output.wav
+opusenc_old -h
 pause

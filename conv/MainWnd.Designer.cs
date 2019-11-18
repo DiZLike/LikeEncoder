@@ -34,6 +34,7 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.borderPanel1 = new uilib.BorderPanel();
+            this.myButton2 = new uilib.MyButton();
             this.myButton1 = new uilib.MyButton();
             this.progress1 = new uilib.Progress();
             this.btnTextBox2 = new uilib.BtnTextBox();
@@ -64,13 +65,13 @@
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.добавитьФайлыToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // добавитьФайлыToolStripMenuItem
             // 
             this.добавитьФайлыToolStripMenuItem.Name = "добавитьФайлыToolStripMenuItem";
-            this.добавитьФайлыToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.добавитьФайлыToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.добавитьФайлыToolStripMenuItem.Text = "Добавить файлы";
             // 
             // toolStrip1
@@ -99,6 +100,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.borderPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.borderPanel1.Controls.Add(this.myButton2);
             this.borderPanel1.Controls.Add(this.myButton1);
             this.borderPanel1.Controls.Add(this.progress1);
             this.borderPanel1.Controls.Add(this.btnTextBox2);
@@ -111,6 +113,15 @@
             this.borderPanel1.Name = "borderPanel1";
             this.borderPanel1.Size = new System.Drawing.Size(633, 390);
             this.borderPanel1.TabIndex = 5;
+            // 
+            // myButton2
+            // 
+            this.myButton2.Location = new System.Drawing.Point(467, 161);
+            this.myButton2.Name = "myButton2";
+            this.myButton2.Size = new System.Drawing.Size(83, 26);
+            this.myButton2.TabIndex = 10;
+            this.myButton2.Title = "MyButton";
+            this.myButton2.Click += new System.EventHandler(this.myButton2_Click);
             // 
             // myButton1
             // 
@@ -244,6 +255,7 @@
         private uilib.BtnTextBox btnTextBox2;
         private uilib.Progress progress1;
         private uilib.MyButton myButton1;
+        private uilib.MyButton myButton2;
     }
 }
 

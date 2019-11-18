@@ -16,7 +16,17 @@ namespace conv
     {
         private BassApp app;
         private OpenFileDialog openFileDialog;
-        object[] param = new object[20];
+
+        /*
+         *      0: битрейт
+         *      1: фреймы
+         *      2: частота
+         *      3: качество алгоритма
+         *      4: каналы
+         *      5: Music
+         *      6: Speech
+         * */
+        private object[] param = new object[20];
 
         public MainWnd()
         {
@@ -78,9 +88,7 @@ namespace conv
             List<string> tracks = new List<string>();
             foreach (var item in trackPanel1.Tracks)
 		        tracks.Add(item.Path);
-
-            //object[] param = new object[] { 32, 60 };
-            app.Start(EncoderType.OPUS, param, tracks.ToArray(), AppDomain.CurrentDomain.BaseDirectory);
+            app.Start((EncoderType)borderComboBox1.SelectedIndex, param, tracks.ToArray(), AppDomain.CurrentDomain.BaseDirectory);
         }
 
         private void btnTextBox1_Click(object sender, EventArgs e)
@@ -91,6 +99,11 @@ namespace conv
                     new OpusWnd(ref param).ShowDialog();
                     break;
             }
+        }
+
+        private void myButton2_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

@@ -58,13 +58,13 @@ namespace uilib
             BorderWidth = 1;
 
             x = this.Size.Width;
-            y = this.Size.Height;
+            y = this.Size.Height - 2;
             panel1.BackColor = progressColor;
         }
         private void XProgressBar_Resize(object sender, EventArgs e)
         {
             x = this.Size.Width;
-            y = this.Size.Height;
+            y = this.Size.Height - 2;
         }
 
         private void panel1_MouseEnter(object sender, EventArgs e)

@@ -1,0 +1,8 @@
+encoders\opus\opusenc --bitrate 24 --framesize 60 --comp 10 --music - "C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\1-02 Ninja's Respite (Ninja Village).opus"
+encoders\opus\opusenc --bitrate 24 --framesize 60 --comp 10 --music - "C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\1-03 Hills of Destiny (Autumn Hills).opus"
+encoders\opus\opusenc --bitrate 32 --framesize 20 --comp 10 - "C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\1-02 Ninja's Respite (Ninja Village).opus"
+encoders\opus\opusenc --bitrate 128 --framesize 20 --comp 10 --music - "C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\1-02 Ninja's Respite (Ninja Village).opus"
+encoders\opus\opusenc --bitrate 128 --framesize 20 --comp 10 --music - "C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\1-05 Forgotten (Forlorn Temple).opus"
+encoders\opus\opusenc --bitrate 24 --framesize 60 --comp 10 - "C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\1-02 Ninja's Respite (Ninja Village).opus"
+encoders\opus\opusenc --bitrate 24 --framesize 60 --comp 10 --music - "C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\1-02 Ninja's Respite (Ninja Village).opus"
+encoders\opus\opusenc --bitrate 24 --framesize 60 --comp 10 --speech - "C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\1-02 Ninja's Respite (Ninja Village).opus"

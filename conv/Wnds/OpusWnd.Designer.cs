@@ -40,6 +40,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.frequency = new uilib.BorderComboBox();
             this.myButton1 = new uilib.MyButton();
+            this.music = new System.Windows.Forms.RadioButton();
+            this.speech = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.borderPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +53,10 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.borderPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.borderPanel1.Controls.Add(this.radioButton1);
+            this.borderPanel1.Controls.Add(this.label6);
+            this.borderPanel1.Controls.Add(this.speech);
+            this.borderPanel1.Controls.Add(this.music);
             this.borderPanel1.Controls.Add(this.label5);
             this.borderPanel1.Controls.Add(this.quality);
             this.borderPanel1.Controls.Add(this.label4);
@@ -61,7 +69,7 @@
             this.borderPanel1.Controls.Add(this.frequency);
             this.borderPanel1.Location = new System.Drawing.Point(5, 5);
             this.borderPanel1.Name = "borderPanel1";
-            this.borderPanel1.Size = new System.Drawing.Size(203, 148);
+            this.borderPanel1.Size = new System.Drawing.Size(216, 218);
             this.borderPanel1.TabIndex = 0;
             // 
             // label5
@@ -205,17 +213,64 @@
             // 
             // myButton1
             // 
-            this.myButton1.Location = new System.Drawing.Point(65, 159);
+            this.myButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.myButton1.Location = new System.Drawing.Point(65, 229);
             this.myButton1.Name = "myButton1";
             this.myButton1.Size = new System.Drawing.Size(83, 26);
             this.myButton1.TabIndex = 1;
+            this.myButton1.Title = "Ok";
+            this.myButton1.Load += new System.EventHandler(this.myButton1_Load);
             this.myButton1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // music
+            // 
+            this.music.AutoSize = true;
+            this.music.Location = new System.Drawing.Point(71, 169);
+            this.music.Name = "music";
+            this.music.Size = new System.Drawing.Size(65, 17);
+            this.music.TabIndex = 10;
+            this.music.TabStop = true;
+            this.music.Text = "Музыка";
+            this.music.UseVisualStyleBackColor = true;
+            // 
+            // speech
+            // 
+            this.speech.AutoSize = true;
+            this.speech.Location = new System.Drawing.Point(71, 192);
+            this.speech.Name = "speech";
+            this.speech.Size = new System.Drawing.Size(49, 17);
+            this.speech.TabIndex = 11;
+            this.speech.TabStop = true;
+            this.speech.Text = "Речь";
+            this.speech.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 146);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Тип аудио:";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(71, 146);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(103, 17);
+            this.radioButton1.TabIndex = 13;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Автоматически";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // OpusWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(213, 194);
+            this.ClientSize = new System.Drawing.Size(226, 264);
             this.Controls.Add(this.myButton1);
             this.Controls.Add(this.borderPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -244,5 +299,9 @@
         private System.Windows.Forms.Label label2;
         private uilib.BorderComboBox channel;
         private uilib.MyButton myButton1;
+        private System.Windows.Forms.RadioButton speech;
+        private System.Windows.Forms.RadioButton music;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RadioButton radioButton1;
     }
 }

@@ -44,6 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BassApp.cs" />
+    <Compile Include="Cfg.cs" />
+    <Compile Include="Consts.cs" />
+    <Compile Include="Debug.cs" />
     <Compile Include="Encoders\AudioEncoder.cs" />
     <Compile Include="AudioResampler.cs" />
     <Compile Include="Encoders\AudioOpus.cs" />

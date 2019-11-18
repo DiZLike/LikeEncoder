@@ -86,18 +86,19 @@ namespace lib
 
         private void BeginEncoding()
         {
-            var opus = new AudioOpus();
+            
             for (int i = 0; i < trackList.Count; i++)
             {
                 if (trackList[i].Complete || trackList[i].Started)
                     continue;
                 trackList[i].Started = true;
-
-                opus.Bitrate = Convert.ToInt32(param[0]);
-                opus.Framesize = param[1].ToString();
-
-                string of = Path.GetFileNameWithoutExtension(trackList[i].Name);
-                opus.Start(trackList[i].Name, outFolder + of, i, onProgress);
+                switch (encoderType)
+                {
+                    case EncoderType.OPUS:
+                        StartOpus(i);
+                        break;
+                }
+                
                 trackList[i].Complete = true;
             }
         }
@@ -110,6 +111,20 @@ namespace lib
                     return true;
             }
             return false;
+        }
+
+        private void StartOpus(int index)
+        {
+            var opus = new AudioOpus();
+            opus.Bitrate = Convert.ToInt32(param[0]);
+            opus.Framesize = param[1].ToString();
+            opus.Quality = Convert.ToInt32(param[3]);
+            opus.Channels = (int)param[4];
+            opus.Music = (bool)param[5];
+            opus.Speech = (bool)param[6];
+
+            string of = Path.GetFileNameWithoutExtension(trackList[index].Name);
+            opus.Start(trackList[index].Name, outFolder + of, index, onProgress);
         }
 
     }
