@@ -1,0 +1,14 @@
+E:\conv\uilib\bin\Debug\uilib.dll
+E:\conv\uilib\bin\Debug\uilib.pdb
+E:\conv\uilib\obj\Debug\ResolveAssemblyReference.cache
+E:\conv\uilib\obj\Debug\uilib.Track.resources
+E:\conv\uilib\obj\Debug\uilib.TrackPanel.resources
+E:\conv\uilib\obj\Debug\GenerateResource.read.1.tlog
+E:\conv\uilib\obj\Debug\GenerateResource.write.1.tlog
+E:\conv\uilib\obj\Debug\uilib.dll
+E:\conv\uilib\obj\Debug\uilib.pdb
+E:\conv\uilib\obj\Debug\uilib.Properties.Resources.resources
+E:\conv\uilib\obj\Debug\uilib.BtnTextBox.resources
+E:\conv\uilib\obj\Debug\uilib.BorderTextBox.resources
+E:\conv\uilib\obj\Debug\uilib.Progress.resources
+E:\conv\uilib\obj\Debug\uilib.MyButton.resources

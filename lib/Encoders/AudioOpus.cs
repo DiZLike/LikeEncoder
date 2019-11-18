@@ -8,14 +8,17 @@ namespace lib.Encoders
 {
     public class AudioOpus : AudioEncoder
     {
-        public float Framesize { get; set; }
+        public string Framesize { get; set; }
 
-        public void Start()
+        public void Start(string sourceAudio, string exitAudio, int index, ProgressHandler onProgress)
         {
-            Bitrate = 16;
-            Framesize = 20;
-            cmd = string.Format("opusenc --bitrate {0} --framesize {1} - {2}.opus", Bitrate, Framesize, outputFile);
-            CreateStream(inputFile, cmd, BASSEncode.BASS_ENCODE_FP_16BIT);
+            this.onProgress = onProgress;
+            this.index = index;
+            string cmd = string.Format("encoders\\opus\\opusenc --bitrate {0} --framesize {1} - \"{2}.opus\"",
+                Bitrate,
+                Framesize,
+                exitAudio);
+            CreateStream(sourceAudio, cmd, BASSEncode.BASS_ENCODE_FP_16BIT);
             StartEncode();
         }
 
