@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -90,6 +90,10 @@
     <ProjectReference Include="..\lib\lib.csproj">
       <Project>{B26A81D4-BFC4-40EF-A715-D9749F731073}</Project>
       <Name>lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tagslib\tagslib.csproj">
+      <Project>{59A32EA8-02AC-4E52-8E3C-71E1241B8FF5}</Project>
+      <Name>tagslib</Name>
     </ProjectReference>
     <ProjectReference Include="..\uilib\uilib.csproj">
       <Project>{E832AD70-E4CC-4356-95A2-51A35B83EC6A}</Project>

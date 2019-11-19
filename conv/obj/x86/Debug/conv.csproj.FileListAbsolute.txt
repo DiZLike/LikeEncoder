@@ -27,3 +27,5 @@ C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\obj\x86\Debug\conv.MainWnd.res
 C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\obj\x86\Debug\conv.Properties.Resources.resources
 C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\obj\x86\Debug\conv.Wnds.OpusWnd.resources
 C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\obj\x86\Debug\conv.csproj.GenerateResource.Cache
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\tagslib.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\conv\bin\Debug\tagslib.pdb
