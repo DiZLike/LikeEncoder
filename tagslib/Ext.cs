@@ -18,7 +18,7 @@ namespace tagslib
         {
             byte[] charsCountBytes = new byte[bit / 8];
             stream.Read(charsCountBytes, 0, charsCountBytes.Length);
-            int charsCount = BitConverter.ToInt16(charsCountBytes, 0);
+            uint charsCount = BitConverter.ToUInt32(charsCountBytes, 0);
             byte[] stringBytes = new byte[charsCount];
             stream.Read(stringBytes, 0, stringBytes.Length);
             return Encoding.UTF8.GetString(stringBytes);

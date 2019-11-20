@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using tagslib.Tags.Opus;
 
 namespace conv
 {
@@ -22,9 +21,7 @@ namespace conv
             }
             else
             {
-                string testFile = @"Y:\Музыка\Eskimo Callboy\2012 - Bury Me In Vegas\04 - Is Anyone Up.opus";
-                testFile = @"Y:\Музыка\Alive In Barcelona\2019 - Alive in Barcelona\02 - Know My Name.opus";
-                OpusFile opus = new OpusFile(testFile);
+
             }
         }
     }

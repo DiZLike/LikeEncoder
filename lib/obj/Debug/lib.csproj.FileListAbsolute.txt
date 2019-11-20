@@ -10,3 +10,9 @@ C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\bin\Debug\Bass.Net.dll
 C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\obj\Debug\lib.csprojResolveAssemblyReference.cache
 C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\obj\Debug\lib.dll
 C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\obj\Debug\lib.pdb
+E:\LikeEncoder\lib\bin\Debug\lib.dll
+E:\LikeEncoder\lib\bin\Debug\lib.pdb
+E:\LikeEncoder\lib\bin\Debug\Bass.Net.dll
+E:\LikeEncoder\lib\obj\Debug\ResolveAssemblyReference.cache
+E:\LikeEncoder\lib\obj\Debug\lib.dll
+E:\LikeEncoder\lib\obj\Debug\lib.pdb

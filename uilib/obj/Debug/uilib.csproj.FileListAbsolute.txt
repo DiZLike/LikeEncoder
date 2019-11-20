@@ -24,3 +24,17 @@ C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.TrackPanel.re
 C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.csproj.GenerateResource.Cache
 C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.dll
 C:\Users\Evgeny\Documents\GitHub\LikeEncoder\uilib\obj\Debug\uilib.pdb
+E:\LikeEncoder\uilib\bin\Debug\uilib.dll
+E:\LikeEncoder\uilib\bin\Debug\uilib.pdb
+E:\LikeEncoder\uilib\obj\Debug\ResolveAssemblyReference.cache
+E:\LikeEncoder\uilib\obj\Debug\uilib.BorderTextBox.resources
+E:\LikeEncoder\uilib\obj\Debug\uilib.BtnTextBox.resources
+E:\LikeEncoder\uilib\obj\Debug\uilib.MyButton.resources
+E:\LikeEncoder\uilib\obj\Debug\uilib.Progress.resources
+E:\LikeEncoder\uilib\obj\Debug\uilib.Properties.Resources.resources
+E:\LikeEncoder\uilib\obj\Debug\uilib.Track.resources
+E:\LikeEncoder\uilib\obj\Debug\uilib.TrackPanel.resources
+E:\LikeEncoder\uilib\obj\Debug\GenerateResource.read.1.tlog
+E:\LikeEncoder\uilib\obj\Debug\GenerateResource.write.1.tlog
+E:\LikeEncoder\uilib\obj\Debug\uilib.dll
+E:\LikeEncoder\uilib\obj\Debug\uilib.pdb

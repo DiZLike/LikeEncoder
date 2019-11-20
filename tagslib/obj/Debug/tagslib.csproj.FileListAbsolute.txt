@@ -2,3 +2,8 @@ C:\Users\Evgeny\Documents\GitHub\LikeEncoder\tagslib\bin\Debug\tagslib.dll
 C:\Users\Evgeny\Documents\GitHub\LikeEncoder\tagslib\bin\Debug\tagslib.pdb
 C:\Users\Evgeny\Documents\GitHub\LikeEncoder\tagslib\obj\Debug\tagslib.dll
 C:\Users\Evgeny\Documents\GitHub\LikeEncoder\tagslib\obj\Debug\tagslib.pdb
+E:\LikeEncoder\tagslib\bin\Debug\tagslib.dll
+E:\LikeEncoder\tagslib\bin\Debug\tagslib.pdb
+E:\LikeEncoder\tagslib\obj\Debug\ResolveAssemblyReference.cache
+E:\LikeEncoder\tagslib\obj\Debug\tagslib.dll
+E:\LikeEncoder\tagslib\obj\Debug\tagslib.pdb

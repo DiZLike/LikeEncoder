@@ -11,6 +11,7 @@ using System.IO;
 using conv.Wnds;
 using conv;
 using lib.Encoders;
+using tagslib.Tags.Opus;
 
 namespace conv
 {
@@ -71,11 +72,15 @@ namespace conv
             var result = openFileDialog.ShowDialog();
             if (result != DialogResult.OK) return;
             var tracks = openFileDialog.FileNames;
+
+            OpusFile f = new OpusFile(openFileDialog.FileName);
+
+            /*
             foreach (var track in tracks)
             {
                 trackPanel1.AddTrack(track,
                     Path.GetFileNameWithoutExtension(track), "YUI");
-            }
+            }*/
 
         }
 

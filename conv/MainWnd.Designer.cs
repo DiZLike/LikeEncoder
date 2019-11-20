@@ -44,10 +44,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.borderPanel2 = new uilib.BorderPanel();
             this.trackPanel1 = new uilib.TrackPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.borderPanel1.SuspendLayout();
             this.borderPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -65,13 +67,13 @@
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.добавитьФайлыToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.файлToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.файлToolStripMenuItem.Text = "Файл";
             // 
             // добавитьФайлыToolStripMenuItem
             // 
             this.добавитьФайлыToolStripMenuItem.Name = "добавитьФайлыToolStripMenuItem";
-            this.добавитьФайлыToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.добавитьФайлыToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.добавитьФайлыToolStripMenuItem.Text = "Добавить файлы";
             // 
             // toolStrip1
@@ -100,6 +102,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.borderPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.borderPanel1.Controls.Add(this.pictureBox1);
             this.borderPanel1.Controls.Add(this.myButton2);
             this.borderPanel1.Controls.Add(this.myButton1);
             this.borderPanel1.Controls.Add(this.progress1);
@@ -217,6 +220,14 @@
             this.trackPanel1.Size = new System.Drawing.Size(446, 323);
             this.trackPanel1.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(466, 193);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(176, 132);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -235,6 +246,7 @@
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();
             this.borderPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,6 +270,7 @@
         private uilib.Progress progress1;
         private uilib.MyButton myButton1;
         private uilib.MyButton myButton2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

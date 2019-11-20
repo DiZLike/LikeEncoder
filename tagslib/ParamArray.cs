@@ -7,16 +7,16 @@ namespace tagslib
 {
     public class ParamArray
     {
-        private Dictionary<object, object> _params = new Dictionary<object, object>();
+        private Dictionary<string, string> _params = new Dictionary<string, string>();
 
-        public object this[string key]
+        public string this[string key]
         {
             get
             {
                 if (_params.ContainsKey(key))
                     return _params[key];
                 else
-                    return new object();
+                    return String.Empty;
             }
             set
             {
