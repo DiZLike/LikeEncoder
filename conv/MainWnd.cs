@@ -11,6 +11,7 @@ using System.IO;
 using conv.Wnds;
 using conv;
 using lib.Encoders;
+using tagslib.Tags.Opus;
 
 namespace conv
 {
@@ -75,6 +76,11 @@ namespace conv
             if (result != DialogResult.OK) return;
             var tracks = openFileDialog.FileNames;
 
+<<<<<<< HEAD
+=======
+            OpusFile f = new OpusFile(openFileDialog.FileName);
+
+>>>>>>> b3707b7e27d56fe73258387df1dee5bdd2aef4c5
             /*
             foreach (var track in tracks)
             {

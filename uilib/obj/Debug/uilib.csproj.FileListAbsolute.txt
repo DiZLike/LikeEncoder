@@ -38,6 +38,7 @@ E:\LikeEncoder\uilib\obj\Debug\GenerateResource.read.1.tlog
 E:\LikeEncoder\uilib\obj\Debug\GenerateResource.write.1.tlog
 E:\LikeEncoder\uilib\obj\Debug\uilib.dll
 E:\LikeEncoder\uilib\obj\Debug\uilib.pdb
+<<<<<<< HEAD
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\uilib\bin\Debug\uilib.dll
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\uilib\bin\Debug\uilib.pdb
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\uilib\obj\Debug\ResolveAssemblyReference.cache
@@ -52,3 +53,5 @@ D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\uilib\obj\Debug\GenerateRes
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\uilib\obj\Debug\GenerateResource.write.1.tlog
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\uilib\obj\Debug\uilib.dll
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\uilib\obj\Debug\uilib.pdb
+=======
+>>>>>>> b3707b7e27d56fe73258387df1dee5bdd2aef4c5

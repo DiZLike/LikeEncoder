@@ -46,10 +46,17 @@
             this.borderComboBox1 = new uilib.BorderComboBox();
             this.btnTextBox1 = new uilib.BtnTextBox();
             this.label1 = new System.Windows.Forms.Label();
+<<<<<<< HEAD
+=======
+            this.borderPanel2 = new uilib.BorderPanel();
+            this.trackPanel1 = new uilib.TrackPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+>>>>>>> b3707b7e27d56fe73258387df1dee5bdd2aef4c5
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.borderPanel1.SuspendLayout();
             this.borderPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -102,7 +109,12 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.borderPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+<<<<<<< HEAD
             this.borderPanel1.Controls.Add(this.borderPanel2);
+=======
+            this.borderPanel1.Controls.Add(this.pictureBox1);
+            this.borderPanel1.Controls.Add(this.myButton2);
+>>>>>>> b3707b7e27d56fe73258387df1dee5bdd2aef4c5
             this.borderPanel1.Controls.Add(this.myButton1);
             this.borderPanel1.Controls.Add(this.progress1);
             this.borderPanel1.Controls.Add(this.btnTextBox2);
@@ -242,6 +254,38 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Формат:";
             // 
+<<<<<<< HEAD
+=======
+            // borderPanel2
+            // 
+            this.borderPanel2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.borderPanel2.Controls.Add(this.trackPanel1);
+            this.borderPanel2.Location = new System.Drawing.Point(6, 6);
+            this.borderPanel2.Name = "borderPanel2";
+            this.borderPanel2.Size = new System.Drawing.Size(452, 329);
+            this.borderPanel2.TabIndex = 0;
+            // 
+            // trackPanel1
+            // 
+            this.trackPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackPanel1.AutoScroll = true;
+            this.trackPanel1.BackColor = System.Drawing.Color.White;
+            this.trackPanel1.Location = new System.Drawing.Point(3, 3);
+            this.trackPanel1.Name = "trackPanel1";
+            this.trackPanel1.Size = new System.Drawing.Size(446, 323);
+            this.trackPanel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(466, 193);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(176, 132);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
+>>>>>>> b3707b7e27d56fe73258387df1dee5bdd2aef4c5
             // MainWnd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,6 +304,7 @@
             this.borderPanel1.ResumeLayout(false);
             this.borderPanel1.PerformLayout();
             this.borderPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,11 +325,16 @@
         private uilib.BtnTextBox btnTextBox2;
         private uilib.Progress progress1;
         private uilib.MyButton myButton1;
+<<<<<<< HEAD
         private uilib.BorderPanel borderPanel2;
         private uilib.MyListView myListView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+=======
+        private uilib.MyButton myButton2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+>>>>>>> b3707b7e27d56fe73258387df1dee5bdd2aef4c5
     }
 }
 

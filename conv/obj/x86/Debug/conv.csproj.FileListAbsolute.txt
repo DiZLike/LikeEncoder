@@ -46,6 +46,7 @@ E:\LikeEncoder\conv\obj\x86\Debug\GenerateResource.read.1.tlog
 E:\LikeEncoder\conv\obj\x86\Debug\GenerateResource.write.1.tlog
 E:\LikeEncoder\conv\bin\Debug\tagslib.dll
 E:\LikeEncoder\conv\bin\Debug\tagslib.pdb
+<<<<<<< HEAD
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\conv\obj\x86\Debug\conv.exe
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\conv\obj\x86\Debug\conv.pdb
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\conv\bin\Debug\conv.exe
@@ -62,3 +63,5 @@ D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\conv\obj\x86\Debug\conv.Wnd
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\conv\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\conv\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\conv\bin\Debug\taglib.dll
+=======
+>>>>>>> b3707b7e27d56fe73258387df1dee5bdd2aef4c5
