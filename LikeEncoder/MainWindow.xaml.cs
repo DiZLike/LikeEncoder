@@ -35,7 +35,7 @@ namespace LikeEncoder
         {
             InitializeComponent();
             app = new BassApp(IntPtr.Zero, OnError, OnProgress, OnComplete, OnCancel);
-            LoadDefaultEncoder();
+            Load();
         }
 
         private void OnError(Error error)
@@ -144,7 +144,7 @@ namespace LikeEncoder
 
         }
 
-        private void LoadDefaultEncoder()
+        private void Load()
         {
             var encs = System.IO.File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\enc\encoders.txt");
             foreach (var item in encs)
@@ -162,6 +162,10 @@ namespace LikeEncoder
                     break;
             }
             ShowEncoderPage();
+            cfg = new Cfg(Cfg.APP_CFG);
+            var fn = cfg.Read("nameformat").Split(',');
+            foreach (var item in fn)
+                namesFormat.Items.Add(item);
         }
 
         private void BtnAddTrack_Click(object sender, RoutedEventArgs e)

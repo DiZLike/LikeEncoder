@@ -1,7 +1,7 @@
 ﻿<Window x:Class="LikeEncoder.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="392" Width="670" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="MainWindow" Height="500" Width="670" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid x:Name="main">
         <Grid.RowDefinitions>
             <RowDefinition Height="25"></RowDefinition>
@@ -15,11 +15,11 @@
                 <Image Source="/LikeEncoder;component/Images/add.png" />
             </Button>
         </ToolBar>
-        <Border Grid.Row="1" Margin="2,2,2,2" BorderBrush="#BFBFBF" BorderThickness="1">
+        <Border x:Name="main_border" Grid.Row="1" Margin="2,2,2,2" BorderBrush="#BFBFBF" BorderThickness="1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="55"></RowDefinition>
+                    <RowDefinition Height="80"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -36,7 +36,7 @@
                     </ListView.View>
                 </ListView>
 
-                <Grid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+                <Grid x:Name="format_grid" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
@@ -68,15 +68,16 @@
 
                 <Grid Grid.Column="0" Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="24"></RowDefinition>
                         <RowDefinition Height="27"></RowDefinition>
+                        <RowDefinition Height="27"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label Grid.Column="0" Grid.Row="0">Конечная папка:</Label>
-                    <Border Grid.Column="1" Grid.Row="0" Margin="0,0,3,3" BorderBrush="#BFBFBF" BorderThickness="1">
+                    <Border Grid.Column="1" Grid.Row="0" Margin="0,3,3,0" BorderBrush="#BFBFBF" BorderThickness="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -86,7 +87,9 @@
                             <Button x:Name="outPathBtn" Grid.Column="1" Click="BtnTargetFolder" Style="{StaticResource NoBorder}">...</Button>
                         </Grid>
                     </Border>
-                    <ProgressBar x:Name="progress" Value="0" Margin="3,3,3,3" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"></ProgressBar>
+                    <Label Grid.Column="0" Grid.Row="1">Имена файлов:</Label>
+                    <ComboBox x:Name="namesFormat" IsEditable="True" Grid.Column="1" Grid.Row="1" Margin="0,3,3,3"></ComboBox>
+                    <ProgressBar x:Name="progress" Value="0" Margin="3,3,3,3" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"></ProgressBar>
                 </Grid>
             </Grid>
         </Border>
