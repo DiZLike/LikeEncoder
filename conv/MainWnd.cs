@@ -30,6 +30,8 @@ namespace conv
             foreach (var item in encs)
                 borderComboBox1.Items.Add(item);
             LoadDefaultEncoder();
+
+            //myListView1.AddItem();
         }
 
         private void CreateDialogs()
@@ -46,9 +48,10 @@ namespace conv
 
         private void OnProgress(int index, int progress)
         {
+            /*
             trackPanel1.Invoke(new Action<int>((i) => trackPanel1.Tracks[index].EncodingProgress = i), progress);
             if (progress == 100)
-                progress1.Invoke(new Action(() => progress1.Value++));
+                progress1.Invoke(new Action(() => progress1.Value++));*/
         }
 
         private void LoadDefaultEncoder()
@@ -71,11 +74,13 @@ namespace conv
             var result = openFileDialog.ShowDialog();
             if (result != DialogResult.OK) return;
             var tracks = openFileDialog.FileNames;
+
+            /*
             foreach (var track in tracks)
             {
                 trackPanel1.AddTrack(track,
                     Path.GetFileNameWithoutExtension(track), "YUI");
-            }
+            }*/
 
         }
 
@@ -86,12 +91,14 @@ namespace conv
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            /*
             List<string> tracks = new List<string>();
             foreach (var item in trackPanel1.Tracks)
 		        tracks.Add(item.Path);
             progress1.Value = 0;
             progress1.Maximum = tracks.Count;
             app.Start((EncoderType)borderComboBox1.SelectedIndex, tracks.ToArray(), AppDomain.CurrentDomain.BaseDirectory);
+        */
         }
 
         private void btnTextBox1_Click(object sender, EventArgs e)
@@ -108,12 +115,6 @@ namespace conv
             }
             formatForm.FormClosed += (s, ev) => btnTextBox1.Title = AudioOpus.Format;
             formatForm.ShowDialog();
-        }
-
-        private void myButton2_Click(object sender, EventArgs e)
-        {
-            object f = "1";
-            f.ToBool();
         }
     }
 }

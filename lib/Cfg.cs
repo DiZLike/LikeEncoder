@@ -8,19 +8,19 @@ namespace lib
 {
     public class Cfg
     {
-        public static string ENC_CFG = @"encoders\enc.cfg";
-        public static string PARAM_TXT = @"encoders\param.txt";
+        public static string ENC_CFG = @"enc\enc.cfg";
+        public static string APP_CFG = @"app.cfg";
+        public static string PARAM_TXT = @"enc\param.txt";
 
         private string file;
-        private string badeDirectory = AppDomain.CurrentDomain.BaseDirectory + @"\";
+        private string baseDirectory = AppDomain.CurrentDomain.BaseDirectory + @"\";
         private List<string> all = new List<string>();
 
         public Cfg(string file)
         {
-            this.file = file;
+            this.file = baseDirectory + file;
         }
-
-        public string Read(string key)
+        public string Read(string key, string def)
         {
             if (File.Exists(file))
                 all = File.ReadAllLines(file).ToList();
@@ -33,7 +33,23 @@ namespace lib
                 var result = item.Remove(0, key.Length + 1);
                 return result;
             }
-            return String.Empty;
+            return def;
+        }
+        public string Read(string key)
+        {
+            return Read(key, String.Empty);
+        }
+        public int ReadInt(string key)
+        {
+            return Read(key).ToInt();
+        }
+        public int ReadInt(string key, int def)
+        {
+            return Read(key, def.ToString()).ToInt();
+        }
+        public bool ReadBool(string key)
+        {
+            return Read(key).ToBool();
         }
         public void Write(string key, object value)
         {
@@ -51,6 +67,10 @@ namespace lib
             }
             all.Add(key + "=" + value);
             File.WriteAllLines(file, all.ToArray());
+        }
+        public void Write(string key, Enum value)
+        {
+            Write(key, (int)Enum.Parse(value.GetType(), value.ToString()));
         }
     }
 }

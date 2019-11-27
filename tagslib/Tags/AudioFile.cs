@@ -9,6 +9,8 @@ namespace tagslib.Tags
 {
     public abstract class AudioFile
     {
+        public MTags Tags { get; set; }
+
         private string file;
         private FileStream fileStream;
 
@@ -21,6 +23,10 @@ namespace tagslib.Tags
         {
             fileStream.Position = offset;
         }
+        protected void AddOffset(long offset)
+        {
+            fileStream.Position += offset;
+        }
         protected string ReadStringChar(int charCount)
         {
             return fileStream.ReadStringChar(0x8);
@@ -32,6 +38,10 @@ namespace tagslib.Tags
         protected int ReadInt()
         {
             return fileStream.ReadInt();
+        }
+        protected byte ReadByte()
+        {
+            return (byte)fileStream.ReadByte();
         }
         protected void GetTags(string[] rawTags, ref ParamArray tags)
         {
@@ -47,7 +57,10 @@ namespace tagslib.Tags
             for (int i = 0; i < comment.Length; i++)
             {
                 if (comment[i] == '=')
+                {
                     splitIndex = i;
+                    break;
+                }
             }
             string name = comment.Substring(0, splitIndex);
             string value = comment.Substring(splitIndex + 1);

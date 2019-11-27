@@ -25,10 +25,10 @@ namespace uilib
         protected override void OnPaintBackground(PaintEventArgs e)
         {
             base.OnPaintBackground(e);
- 
-            var d = BorderWidth/2;
-            using(var pen = new Pen(BorderColor, BorderWidth))
+            var d = BorderWidth / 2;
+            using (var pen = new Pen(BorderColor, BorderWidth))
                 e.Graphics.DrawRectangle(pen, d, d, Width - 2 * d - 1, Height - 2 * d - 1);
         }
+
     }
 }

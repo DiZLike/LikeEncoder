@@ -94,7 +94,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.borderPanel1);
-            this.MaximumSize = new System.Drawing.Size(400, 21);
+            this.MaximumSize = new System.Drawing.Size(2000, 21);
             this.Name = "BtnTextBox";
             this.Size = new System.Drawing.Size(130, 21);
             this.borderPanel1.ResumeLayout(false);

@@ -12,25 +12,21 @@ namespace lib.Encoders
         public bool Music { get; set; }
         public bool Speech { get; set; }
 
-        private static string CFG = @"encoders\opus.cfg";
+        private static string CFG = @"enc\opus.cfg";
 
-        public static string Format
+        public override string Format()
         {
-            get
-            {
-                string ch = String.Empty;
-                if (BassApp.param["channel"].ToInt() == 0)
-                    ch = "Stereo";
-                else
-                    ch = "Mono";
-                return string.Format(@"{0} kBit / {1} frame / {2}",
-                    BassApp.param["bitrate"],
-                    BassApp.param["framesize"],
-                    ch);
-            }
+            string ch = String.Empty;
+            if (BassApp.param["channel"].ToInt() == 0)
+                ch = "Stereo";
+            else
+                ch = "Mono";
+            return string.Format(@"{0} kBit / {1} frame / {2}",
+                BassApp.param["bitrate"],
+                BassApp.param["framesize"],
+                ch);
         }
-
-        public static void LoadParams()
+        public override void LoadParams()
         {
             Cfg cfg = new Cfg(CFG);
             LoadParameter(cfg, "bitrate");
@@ -41,7 +37,7 @@ namespace lib.Encoders
             LoadParameter(cfg, "speech");
 
         }
-        public static void SaveParam()
+        public override void SaveParam()
         {
             Cfg cfg = new Cfg(CFG);
             SaveParameter(cfg, "bitrate");
@@ -52,13 +48,22 @@ namespace lib.Encoders
             SaveParameter(cfg, "speech");
         }
 
-        public void Start(string sourceAudio, string exitAudio, int index, ProgressHandler onProgress)
+        public override void Start(string sourceAudio, string exitAudio, int index,
+            ProgressHandler onProgress, ErrorHandler onError)
         {
+            Bitrate = BassApp.param["bitrate"].ToInt();
+            Framesize = BassApp.param["framesize"].ToString();
+            Quality = BassApp.param["quality"].ToInt();
+            Channels = BassApp.param["channels"].ToInt();
+            Music = BassApp.param["music"].ToBool();
+            Speech = BassApp.param["speech"].ToBool();
+
             this.onProgress = onProgress;
+            this.onError = onError;
             this.index = index;
             string cmd = String.Empty;
             StringBuilder sb = new StringBuilder();
-            sb.Append("encoders\\opus\\opusenc ");
+            sb.Append(@"enc\opus\opusenc ");
             sb.AppendFormat("--bitrate {0} ", Bitrate);
             sb.AppendFormat("--framesize {0} ", Framesize);
             sb.AppendFormat("--comp {0} ", Quality);
@@ -68,12 +73,13 @@ namespace lib.Encoders
                 sb.Append("--music ");
             if (Speech)
                 sb.Append("--speech ");
-            sb.AppendFormat("- \"{0}.opus\"", exitAudio);
+            sb.AppendFormat("- \"{0}\"", exitAudio);
             cmd = sb.ToString();
             Debug.Log(cmd);
 
-            CreateStream(sourceAudio, cmd, BASSEncode.BASS_ENCODE_FP_16BIT);
-            StartEncode();
+            bool created = CreateStream(sourceAudio, cmd, BASSEncode.BASS_ENCODE_FP_16BIT);
+            if (created)
+                StartEncode();
         }
 
     }

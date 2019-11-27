@@ -5,13 +5,17 @@ using System.Text;
 using Un4seen.Bass.Misc;
 using Un4seen.Bass;
 using System.IO;
-using lib.Encoders;
 using System.Threading;
+using System.Threading.Tasks;
+using lib.NTrack;
+using lib.Encoders;
 
 namespace lib
 {
     public delegate void ErrorHandler(Error error);
+    public delegate void CancelHandler();
     public delegate void ProgressHandler(int index, int progress);
+    public delegate void CompleteHandler();
 
     public enum EncoderType
     {
@@ -26,24 +30,29 @@ namespace lib
 
         private ErrorHandler onError;
         private ProgressHandler onProgress;
-        private int threadCount = 1;
+        private CompleteHandler onComplete;
+        private CancelHandler onCancel;
+
+        private int threadCount = 4;
         private Thread[] encodingThread;
         private List<Track> trackList;
+        private TTag[] tags;
         private EncoderType encoderType;
         private string outFolder;
-        //private object[] param;
+        private bool isCanceled = false;
 
-        //public AudioOpus aOpus;
-        public static ParamArray param = new ParamArray();
+        public static values param;
         public int TrackCount { get { return trackList.Count; } }
 
-        public BassApp(IntPtr handle, ErrorHandler onError, ProgressHandler onProgress)
+        public BassApp(IntPtr handle, ErrorHandler onError, ProgressHandler onProgress,
+            CompleteHandler onComplete, CancelHandler onCancel)
         {
             this.handle = handle;
             this.onError = onError;
             this.onProgress = onProgress;
+            this.onComplete = onComplete;
+            this.onCancel = onCancel;
             Init();
-            //aOpus = new AudioOpus();
         }
 
         public void LoadParam()
@@ -59,7 +68,6 @@ namespace lib
             var p = Directory.GetFiles(pluginsFolder);
             foreach (var item in p)
                 Bass.BASS_PluginLoad(item);
-            SetThreadCount(4);
         }
 
         public void SetThreadCount(int count)
@@ -70,10 +78,15 @@ namespace lib
                 encodingThread[i] = new Thread(new ThreadStart(BeginEncoding));
         }
 
-        public void Start(EncoderType encoderType, string[] tracks, string outputFolder)
+        public void Start(EncoderType encoderType, string[] tracks, TTag[] tags, string outputFolder)
         {
+            SetThreadCount(threadCount);
             this.encoderType = encoderType;
+            this.tags = tags;
             this.outFolder = outputFolder;
+            if (!Directory.Exists(outFolder))
+                Directory.CreateDirectory(outFolder);
+
             trackList = new List<Track>();
 
             for (int i = 0; i < tracks.Length; i++)
@@ -87,25 +100,41 @@ namespace lib
                 encodingThread[i].Start();
                 Thread.Sleep(500);
             }
-            
+        }
+
+        public void Stop()
+        {
+            foreach (var thread in encodingThread)
+                thread.Abort();
+            onCancel();
         }
 
         private void BeginEncoding()
         {
-            
             for (int i = 0; i < trackList.Count; i++)
             {
                 if (trackList[i].Complete || trackList[i].Started)
                     continue;
                 trackList[i].Started = true;
+                string of = Path.GetFileNameWithoutExtension(trackList[i].Name);
+
+                string ofn = outFolder + AudioTags.DirectoryStructPattern(@"[artist]\[year] - [album]\[trackNo] - [title]", tags[i]);
+                if (!Directory.Exists(Path.GetDirectoryName(ofn)))
+                    Directory.CreateDirectory(Path.GetDirectoryName(ofn));
+                
                 switch (encoderType)
                 {
                     case EncoderType.OPUS:
-                        StartOpus(i);
+                        ofn += ".opus";
+                        var opus = new AudioOpus();
+                        opus.SaveParam();
+                        opus.Start(trackList[i].Name, ofn, i,
+                            onProgress, onError);
                         break;
                 }
                 
                 trackList[i].Complete = true;
+                AudioTags.SaveTags(ofn, tags[i]);
             }
             CheckAllComplete();
         }
@@ -117,11 +146,7 @@ namespace lib
                 if (!item.Started || !item.Complete)
                     return;
             }
-            for (int i = 0; i < trackList.Count; i++)
-            {
-                trackList[i].Complete = false;
-                trackList[i].Started = false;
-            }
+            onComplete();
         }
 
         private bool CheckComplite()
@@ -134,19 +159,14 @@ namespace lib
             return false;
         }
 
-        private void StartOpus(int index)
+        public int CreateStream(string file)
         {
-            var opus = new AudioOpus();
+            return Bass.BASS_StreamCreateFile(file, 0, 0, BASSFlag.BASS_STREAM_DECODE);
+        }
 
-            opus.Bitrate = param["bitrate"].ToInt();
-            opus.Framesize = param["framesize"].ToString();
-            opus.Quality = param["quality"].ToInt();
-            opus.Channels = param["channels"].ToInt();
-            opus.Music = param["music"].ToBool();
-            opus.Speech = param["speech"].ToBool();
-
-            string of = Path.GetFileNameWithoutExtension(trackList[index].Name);
-            opus.Start(trackList[index].Name, outFolder + of, index, onProgress);
+        public void CtreamDestroy(int stream)
+        {
+            Bass.BASS_StreamFree(stream);
         }
 
     }

@@ -10,29 +10,24 @@ using System.Threading;
 
 namespace lib
 {
-    /*
-    public class EncoderEventArgs : EventArgs
-    {
-        public float Progress { get; set; }
-
-        public EncoderEventArgs(float progress)
-        {
-            Progress = progress;
-        }
-    }*/
-
     public abstract class AudioEncoder
     {
         public int Bitrate { get; set; }
         public int Quality { get; set; }
         public int Channels { get; set; }
 
-        /*
-        public delegate void EncoderEventHandler(object sender, EncoderEventArgs e);
-        public event EncoderEventHandler OnProgress;*/
         protected ProgressHandler onProgress;
+        protected ErrorHandler onError;
         protected int index;
         protected int stream;
+
+        private int enc;
+
+        public abstract string Format();
+        public abstract void LoadParams();
+        public abstract void SaveParam();
+        public abstract void Start(string sourceAudio, string exitAudio, int index,
+            ProgressHandler onProgress, ErrorHandler onError);
 
         protected static void LoadParameter(Cfg cfg, string param)
         {
@@ -43,12 +38,22 @@ namespace lib
             cfg.Write(param, BassApp.param[param]);
         }
 
-        protected void CreateStream(string file, string cmd, BASSEncode encodeFlags)
+        protected bool CreateStream(string file, string cmd, BASSEncode encodeFlags)
         {
             stream = Bass.BASS_StreamCreateFile(file, 0, 0, BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_STREAM_DECODE);
-            BassEnc.BASS_Encode_Start(stream, cmd, encodeFlags, null, IntPtr.Zero);
+            if (stream == 0)
+            {
+                onError(new Error(IntPtr.Zero, Error.ENCODER_STREAM));
+                return false;
+            }
+            enc = BassEnc.BASS_Encode_Start(stream, cmd, encodeFlags, null, IntPtr.Zero);
+            if (enc == 0)
+            {
+                onError(new Error(IntPtr.Zero, Error.ENCODER_START));
+                return false;
+            }
+            return true;
         }
-
         protected void StartEncode()
         {
             byte[] _encBuffer = new byte[65536];
@@ -61,6 +66,7 @@ namespace lib
                 if (progress % 5 == 0)
                     onProgress(index, progress);
             }
+            BassEnc.BASS_Encode_Stop(enc);
         }
     }
 }
