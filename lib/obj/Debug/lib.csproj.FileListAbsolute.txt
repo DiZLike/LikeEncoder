@@ -5,4 +5,11 @@ D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\bin\Debug\taglib.dll
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\obj\Debug\ResolveAssemblyReference.cache
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\obj\Debug\lib.dll
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\obj\Debug\lib.pdb
+<<<<<<< HEAD
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\bin\Debug\xNet.dll
+=======
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\bin\Debug\taglib.dll
+=======
+>>>>>>> b3707b7e27d56fe73258387df1dee5bdd2aef4c5
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\bin\Debug\taglib.dll
+>>>>>>> 58bfb773b28e99cf52281248c35db62c296c6ce1

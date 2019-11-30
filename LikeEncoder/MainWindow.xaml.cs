@@ -149,6 +149,7 @@ namespace LikeEncoder
 
         }
 
+<<<<<<< HEAD
         private void ShowMemoryUsege()
         {
             while (true)
@@ -159,6 +160,8 @@ namespace LikeEncoder
             }
         }
 
+=======
+>>>>>>> 58bfb773b28e99cf52281248c35db62c296c6ce1
         private void Load()
         {
             var encs = System.IO.File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\enc\encoders.txt");
@@ -171,6 +174,18 @@ namespace LikeEncoder
             var cfg = new Cfg(Cfg.ENC_CFG);
             int defenc = cfg.Read("default_encoder").ToInt();
             encodersList.SelectedIndex = defenc;
+<<<<<<< HEAD
+=======
+            switch ((EncoderType)defenc)
+            {
+                case EncoderType.OPUS:
+                    var opus = new AudioOpus();
+                    opus.LoadParams();
+                    formatTitle.Text = opus.Format();
+                    break;
+            }
+            ShowEncoderPage();
+>>>>>>> 58bfb773b28e99cf52281248c35db62c296c6ce1
             cfg = new Cfg(Cfg.APP_CFG);
             var fn = cfg.Read("nameformat").Split(',');
             foreach (var item in fn)
