@@ -15,6 +15,8 @@ namespace lib.NTrack
         public string Year { get; set; }
         public string TrackNo { get; set; }
 
+        public double TimeStart { get; set; }
+        public double TimeEnd { get; set; }
 
         public string Codec { get; set; }
         public string Frequency { get; set; }

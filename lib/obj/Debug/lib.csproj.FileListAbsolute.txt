@@ -1,28 +1,8 @@
-E:\conv\lib\bin\Debug\lib.dll
-E:\conv\lib\bin\Debug\lib.pdb
-E:\conv\lib\bin\Debug\Bass.Net.dll
-E:\conv\lib\obj\Debug\ResolveAssemblyReference.cache
-E:\conv\lib\obj\Debug\lib.dll
-E:\conv\lib\obj\Debug\lib.pdb
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\bin\Debug\lib.dll
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\bin\Debug\lib.pdb
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\bin\Debug\Bass.Net.dll
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\obj\Debug\lib.csprojResolveAssemblyReference.cache
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\obj\Debug\lib.dll
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\lib\obj\Debug\lib.pdb
-E:\LikeEncoder\lib\bin\Debug\lib.dll
-E:\LikeEncoder\lib\bin\Debug\lib.pdb
-E:\LikeEncoder\lib\bin\Debug\Bass.Net.dll
-E:\LikeEncoder\lib\obj\Debug\ResolveAssemblyReference.cache
-E:\LikeEncoder\lib\obj\Debug\lib.dll
-E:\LikeEncoder\lib\obj\Debug\lib.pdb
-<<<<<<< HEAD
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\bin\Debug\lib.dll
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\bin\Debug\lib.pdb
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\bin\Debug\Bass.Net.dll
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\bin\Debug\taglib.dll
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\obj\Debug\ResolveAssemblyReference.cache
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\obj\Debug\lib.dll
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\obj\Debug\lib.pdb
-D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\bin\Debug\taglib.dll
-=======
->>>>>>> b3707b7e27d56fe73258387df1dee5bdd2aef4c5
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\lib\bin\Debug\xNet.dll

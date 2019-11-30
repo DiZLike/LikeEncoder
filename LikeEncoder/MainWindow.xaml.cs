@@ -19,6 +19,10 @@ using lib;
 using lib.NTrack;
 using lib.Encoders;
 using LikeEncoder.Wnds;
+using System.Threading.Tasks;
+using System.Threading;
+using lib.Encoders.Opus;
+using lib.Cue;
 
 namespace LikeEncoder
 {
@@ -30,12 +34,12 @@ namespace LikeEncoder
     public partial class MainWindow : Window
     {
         private BassApp app;
-        private TTag[] _tags;
+        private List<TTag> _tags = new List<TTag>();
         public MainWindow()
         {
             InitializeComponent();
             app = new BassApp(IntPtr.Zero, OnError, OnProgress, OnComplete, OnCancel);
-            LoadDefaultEncoder();
+            Load();
         }
 
         private void OnError(Error error)
@@ -72,7 +76,7 @@ namespace LikeEncoder
         }
         private void OnLoadTags(TTag tags)
         {
-            _tags[tags.Index] = tags;
+            _tags.Add(tags);
             var trackItem = new BTrackList()
             {
                 ID = tags.Index + 1,
@@ -81,6 +85,7 @@ namespace LikeEncoder
                 Status = "Ожидание"
             };
             trackList.Dispatcher.Invoke(new Action<BTrackList>((i) => trackList.Items[tags.Index] = i), trackItem);
+            progress.Dispatcher.Invoke(new Action<int>((i) => progress.Maximum = i), _tags.Count);
         }
         private void OnEncoderValueChanged(string encoderInfo)
         {
@@ -144,24 +149,32 @@ namespace LikeEncoder
 
         }
 
-        private void LoadDefaultEncoder()
+        private void ShowMemoryUsege()
+        {
+            while (true)
+            {
+                this.Dispatcher.Invoke(new Action<double>((d) 
+                    => this.Title = d.ToString()), Sys.MemoryUsege());
+                Thread.Sleep(1000);
+            }
+        }
+
+        private void Load()
         {
             var encs = System.IO.File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\enc\encoders.txt");
             foreach (var item in encs)
                 encodersList.Items.Add(item);
+            /*
+            new AudioOpus().GetEncoderParams();
+            new AudioLame().GetEncoderParams();*/
 
             var cfg = new Cfg(Cfg.ENC_CFG);
             int defenc = cfg.Read("default_encoder").ToInt();
             encodersList.SelectedIndex = defenc;
-            switch ((EncoderType)defenc)
-            {
-                case EncoderType.OPUS:
-                    var opus = new AudioOpus();
-                    opus.LoadParams();
-                    formatTitle.Text = opus.Format();
-                    break;
-            }
-            ShowEncoderPage();
+            cfg = new Cfg(Cfg.APP_CFG);
+            var fn = cfg.Read("nameformat").Split(',');
+            foreach (var item in fn)
+                namesFormat.Items.Add(item);
         }
 
         private void BtnAddTrack_Click(object sender, RoutedEventArgs e)
@@ -171,32 +184,80 @@ namespace LikeEncoder
             bool? b = ofd.ShowDialog();
             if (!b.Value) return;
             var tracks = ofd.FileNames;
+
             for (int i = 0; i < tracks.Length; i++)
             {
-                var at = new AudioTags(tracks[i], i, OnLoadTags);
-                var trackItem = new BTrackList()
+                var ext = System.IO.Path.GetExtension(tracks[i]);
+                if (ext != ".cue")
                 {
-                    ID = i + 1,
-                    Format = "",
-                    Title = System.IO.Path.GetFileName(tracks[i]),
-                    Status = "Загрузка"
-                };
-                trackList.Items.Add(trackItem);
+                    var at = new AudioTags(tracks[i], _tags.Count + i, OnLoadTags);
+                    var trackItem = new BTrackList()
+                    {
+                        ID = _tags.Count + i + 1,
+                        Format = "",
+                        Title = System.IO.Path.GetFileName(tracks[i]),
+                        Status = "Загрузка"
+                    };
+                    trackList.Items.Add(trackItem);
+                }
+                else
+                {
+                    CueFile cue = new CueFile(tracks[i]);
+                    var at = new AudioTags(cue.File);
+                    string[] tm = at.Tags.Duration.Split(':');
+
+                    for (int x = 0; x < cue.Tracks.Count; x++)
+                    {
+                        var t = cue.Tracks[x];
+                        at.Tags.Album = cue.Title;
+                        at.Tags.TrackNo = (x + 1).ToString();
+                        at.Tags.Artist = cue.Performer;
+                        at.Tags.Title = t.Title;
+                        at.Tags.TimeStart = t.Seconds;
+
+                        if (x + 1 < cue.Tracks.Count)
+                        {
+                            at.Tags.TimeEnd = cue.Tracks[x + 1].Seconds;
+                            TimeSpan ts = new TimeSpan(0, 0, (int)at.Tags.TimeEnd - (int)at.Tags.TimeStart);
+                            at.Tags.Duration = ts.ToString("mm':'ss");
+                        }
+                        else
+                        {
+                            TimeSpan ts = new TimeSpan(0, tm[0].ToInt(), tm[1].ToInt()).Subtract(
+                                new TimeSpan(0, 0, (int)at.Tags.TimeStart));
+                            at.Tags.Duration = ts.ToString("mm':'ss");
+                        }
+
+                        _tags.Add(at.Tags);
+
+                        var trackItem = new BTrackList()
+                        {
+                            ID = _tags.Count,
+                            Format = _tags[x].FormatInfo,
+                            Title = at.Tags.Title,
+                            Status = "Ожидание"
+                        };
+                        trackList.Items.Add(trackItem);
+
+                        
+                    }
+                }
+
+
             }
-            _tags = new TTag[trackList.Items.Count];
-            progress.Maximum = _tags.Length;
         }
 
         private void BtnStart(object sender, RoutedEventArgs e)
         {
             if (StartBtn.Tag.ToString() == "start")
             {
+                string pattern = namesFormat.Text;
                 List<string> tracks = new List<string>();
                 if (_tags == null) return;
                 foreach (var item in _tags)
                     tracks.Add(item.FileName);
                 EncoderType enc = (EncoderType)encodersList.SelectedIndex;
-                app.Start(enc, tracks.ToArray(), _tags, outPath.Text);
+                app.Start(enc, tracks.ToArray(), _tags.ToArray(), pattern, outPath.Text);
                 LockUI(true);
             }
             else
@@ -208,6 +269,7 @@ namespace LikeEncoder
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadAppCfg();
+            Task.Factory.StartNew(ShowMemoryUsege);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -227,11 +289,14 @@ namespace LikeEncoder
 
         private void ShowEncoderPage()
         {
-            Page encPage;
+            Page encPage = new Page();
             switch ((EncoderType)encodersList.SelectedIndex)
             {
                 case EncoderType.OPUS:
-                    encPage = new OpusPage(OnEncoderValueChanged);
+                    encPage = new OpusPage(OnEncoderValueChanged, app._opusValue);
+                    break;
+                case EncoderType.MP3_LAME:
+                    encPage = new LamePage(OnEncoderValueChanged, app._lameValue);
                     break;
                 default:
                     encPage = new Page();

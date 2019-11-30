@@ -24,11 +24,22 @@ namespace lib.NTrack
             this.index = index;
             this.file = file;
             Task.Factory.StartNew(LoadTags);
+        }
 
+        public AudioTags(string file)
+        {
+            this.file = file;
+
+
+
+
+            LoadTags();
         }
 
         public static void SaveTags(string file, TTag tag)
         {
+            if (!System.IO.File.Exists(file))
+                return;
             var tfile = TagLib.File.Create(file);
             var stfile = TagLib.File.Create(tag.FileName);
 
@@ -89,14 +100,17 @@ namespace lib.NTrack
             string trackno = "[trackNo]";
             string filename = "[filename]";
 
-            if (tag.TrackNo.ToInt() < 10)
-                tag.TrackNo = "0" + tag.TrackNo;
+            if (tag.TrackNo != null)
+                if (tag.TrackNo.ToInt() < 10)
+                    tag.TrackNo = "0" + tag.TrackNo;
 
             string o = pattern.Replace(artist, tag.Artist);
             o = o.Replace(album, tag.Album);
             o = o.Replace(title, tag.Title);
-            o = o.Replace(year, tag.Year);
-            o = o.Replace(trackno, tag.TrackNo);
+            if (tag.Year != null)
+                o = o.Replace(year, tag.Year);
+            if (tag.TrackNo != null)
+                o = o.Replace(trackno, tag.TrackNo);
             o = o.Replace(filename, tag.FileName);
 
             return o;
@@ -120,7 +134,9 @@ namespace lib.NTrack
             Tags.Bitrate = info.bitrate + " kBit";
             Tags.Channels = GetChannel(info.channelinfo.chans);
             Tags.Duration = new TimeSpan(0, 0, 0, (int)info.duration).ToString("mm':'ss");
-            onLoadTags(Tags);
+            info = null;
+            if (onLoadTags != null)
+                onLoadTags(Tags);
         }
 
         private string GetCodec(BASSChannelType ctype)

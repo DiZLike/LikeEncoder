@@ -20,12 +20,31 @@ namespace lib
         {
             this.file = baseDirectory + file;
         }
+        public string[] GetKeys()
+        {
+            List<string> keys = new List<string>();
+            if (File.Exists(file))
+                all = File.ReadAllLines(file).ToList();
+            foreach (var item in all)
+            {
+                if (item.Length < 1) continue;
+                if (item[0] == '*')
+                    continue;
+                keys.Add(item.Split('=').First());
+            }
+            return keys.ToArray();
+        }
+
         public string Read(string key, string def)
         {
             if (File.Exists(file))
                 all = File.ReadAllLines(file).ToList();
             foreach (var item in all)
             {
+                if (item.Length < 1)
+                    continue;
+                if (item[0] == '*')
+                    continue;
                 if (key.Length >= item.Length)
                     continue;
                 var it = item.Remove(key.Length);

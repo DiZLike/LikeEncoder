@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("enc/opus/opusenc.exe")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("enc/opus/opusenc.html")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("enc/opus/opusenc_old.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("audio_x_generic.ico")]
 
 
