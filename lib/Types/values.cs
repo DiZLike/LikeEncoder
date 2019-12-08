@@ -5,7 +5,7 @@ using System.Text;
 
 namespace lib
 {
-    public struct values
+    public struct Values
     {
         private Dictionary<object, object> _params;
 
@@ -30,5 +30,8 @@ namespace lib
                     _params.Add(key, value);
             }
         }
+
+
+
     }
 }

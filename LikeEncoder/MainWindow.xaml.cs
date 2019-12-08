@@ -1,24 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Data;
 using WinForms = System.Windows.Forms;
 using LikeEncoder.Binding;
 using Microsoft.Win32;
 using lib;
 using lib.NTrack;
-using lib.Encoders;
 using LikeEncoder.Wnds;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace LikeEncoder
 {
@@ -30,12 +22,12 @@ namespace LikeEncoder
     public partial class MainWindow : Window
     {
         private BassApp app;
-        private TTag[] _tags;
+        private List<TTag> _tags = new List<TTag>();
         public MainWindow()
         {
             InitializeComponent();
             app = new BassApp(IntPtr.Zero, OnError, OnProgress, OnComplete, OnCancel);
-            LoadDefaultEncoder();
+            Load();
         }
 
         private void OnError(Error error)
@@ -43,13 +35,13 @@ namespace LikeEncoder
             string msg = string.Format("{0}", error.Message);
             MessageBox.Show(msg, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             LockUI(false);
-            trackList.Dispatcher.Invoke(new Action(() => this.progress.Value++));
+            trackList.Dispatcher.BeginInvoke(new Action(() => this.progress.Value++));
         }
 
         private void OnComplete()
         {
             LockUI(false);
-            trackList.Dispatcher.Invoke(new Action(() => this.progress.Value = 0));
+            trackList.Dispatcher.BeginInvoke(new Action(() => this.progress.Value = 0));
         }
 
         private void OnProgress(int index, int progress)
@@ -66,13 +58,13 @@ namespace LikeEncoder
             else
             {
                 trackItem.Status = "Готово";
-                trackList.Dispatcher.Invoke(new Action(() => this.progress.Value++));
+                Dispatcher.BeginInvoke(new Action(() => this.progress.Value++));
             }
-            trackList.Dispatcher.Invoke(new Action<BTrackList>((i) => trackList.Items[index] = i), trackItem);
+            Dispatcher.BeginInvoke(new Action<BTrackList>((i) => trackList.Items[index] = i), trackItem);
         }
         private void OnLoadTags(TTag tags)
         {
-            _tags[tags.Index] = tags;
+            _tags.Add(tags);
             var trackItem = new BTrackList()
             {
                 ID = tags.Index + 1,
@@ -80,7 +72,8 @@ namespace LikeEncoder
                 Title = tags.ArtistTitle,
                 Status = "Ожидание"
             };
-            trackList.Dispatcher.Invoke(new Action<BTrackList>((i) => trackList.Items[tags.Index] = i), trackItem);
+            trackList.Dispatcher.BeginInvoke(new Action<BTrackList>((i) => trackList.Items[tags.Index] = i), trackItem);
+            progress.Dispatcher.BeginInvoke(new Action<int>((i) => progress.Maximum = i), _tags.Count);
         }
         private void OnEncoderValueChanged(string encoderInfo)
         {
@@ -89,7 +82,7 @@ namespace LikeEncoder
         private void OnCancel()
         {
             LockUI(false);
-            trackList.Dispatcher.Invoke(new Action(() => this.progress.Value = 0));
+            trackList.Dispatcher.BeginInvoke(new Action(() => this.progress.Value = 0));
         }
 
         private void SaveAppCfg()
@@ -105,6 +98,7 @@ namespace LikeEncoder
             cfg.Write("lf", tlFormat.Width);
             cfg.Write("ls", tlStatus.Width);
             cfg.Write("out", outPath.Text);
+            cfg.Write("nf", namesFormat.Text);
         }
         private void LoadAppCfg()
         {
@@ -119,22 +113,25 @@ namespace LikeEncoder
             tlFormat.Width = cfg.ReadInt("lf", 100);
             tlStatus.Width = cfg.ReadInt("ls", 55);
             outPath.Text = cfg.Read("out", AppDomain.CurrentDomain.BaseDirectory);
+            namesFormat.Text = cfg.Read("nf", "[filename]");
         }
 
         private void LockUI(bool _lock)
         {
-            addBtn.Dispatcher.Invoke(new Action<bool>((b)
+            addBtn.Dispatcher.BeginInvoke(new Action<bool>((b)
                 => addBtn.IsEnabled = b), !_lock);
-            outPath.Dispatcher.Invoke(new Action<bool>((b)
+            outPath.Dispatcher.BeginInvoke(new Action<bool>((b)
                 => outPath.IsEnabled = b), !_lock);
-            outPathBtn.Dispatcher.Invoke(new Action<bool>((b)
+            outPathBtn.Dispatcher.BeginInvoke(new Action<bool>((b)
                 => outPathBtn.IsEnabled = b), !_lock);
-            encodersList.Dispatcher.Invoke(new Action<bool>((b)
+            encodersList.Dispatcher.BeginInvoke(new Action<bool>((b)
                 => encodersList.IsEnabled = b), !_lock);
-            formatTitle.Dispatcher.Invoke(new Action<bool>((b)
+            formatTitle.Dispatcher.BeginInvoke(new Action<bool>((b)
                 => formatTitle.IsEnabled = b), !_lock);
-            formatFrame.Dispatcher.Invoke(new Action<bool>((b)
+            formatFrame.Dispatcher.BeginInvoke(new Action<bool>((b)
                 => formatFrame.IsEnabled = b), !_lock);
+            namesFormat.Dispatcher.BeginInvoke(new Action<bool>((b)
+                => namesFormat.IsEnabled = b), !_lock);
 
             StartBtn.Dispatcher.Invoke(new Action(() =>
                 {
@@ -144,59 +141,100 @@ namespace LikeEncoder
 
         }
 
-        private void LoadDefaultEncoder()
+        private void ShowMemoryUsege()
+        {
+            while (true)
+            {
+                this.Dispatcher.BeginInvoke(new Action<double>((d) 
+                    => this.Title = d.ToString()), Sys.MemoryUsege());
+                Thread.Sleep(1000);
+            }
+        }
+
+        private void Load()
         {
             var encs = System.IO.File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\enc\encoders.txt");
             foreach (var item in encs)
                 encodersList.Items.Add(item);
+            /*
+            new AudioOpus().GetEncoderParams();
+            new AudioLame().GetEncoderParams();*/
 
             var cfg = new Cfg(Cfg.ENC_CFG);
             int defenc = cfg.Read("default_encoder").ToInt();
             encodersList.SelectedIndex = defenc;
-            switch ((EncoderType)defenc)
-            {
-                case EncoderType.OPUS:
-                    var opus = new AudioOpus();
-                    opus.LoadParams();
-                    formatTitle.Text = opus.Format();
-                    break;
-            }
-            ShowEncoderPage();
+            cfg = new Cfg(Cfg.APP_CFG);
+            var fn = cfg.Read("nameformat").Split(',');
+            foreach (var item in fn)
+                namesFormat.Items.Add(item);
         }
 
         private void BtnAddTrack_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Multiselect = true;
+            var cfg = new Cfg(Cfg.APP_CFG);
+            ofd.Filter = cfg.Read("openfiles");
             bool? b = ofd.ShowDialog();
             if (!b.Value) return;
             var tracks = ofd.FileNames;
+
             for (int i = 0; i < tracks.Length; i++)
             {
-                var at = new AudioTags(tracks[i], i, OnLoadTags);
-                var trackItem = new BTrackList()
+                var ext = System.IO.Path.GetExtension(tracks[i]);
+                if (ext != ".cue")
                 {
-                    ID = i + 1,
-                    Format = "",
-                    Title = System.IO.Path.GetFileName(tracks[i]),
-                    Status = "Загрузка"
-                };
-                trackList.Items.Add(trackItem);
+                    var at = new AudioTags(tracks[i], _tags.Count + i, OnLoadTags);
+                    var trackItem = new BTrackList()
+                    {
+                        ID = _tags.Count + i + 1,
+                        Format = "",
+                        Title = System.IO.Path.GetFileName(tracks[i]),
+                        Status = "Загрузка"
+                    };
+                    trackList.Items.Add(trackItem);
+                }
+                else
+                {
+                    var at = new AudioTags(tracks[i]);
+                    TTag[] _tags = at.LoadCue();
+                    var cueWnd = new CueWnd(_tags);
+                    cueWnd.ShowDialog();
+                    _tags = cueWnd.tags;
+                    
+                    for (int x = 0; x < _tags.Length; x++)
+                    {
+                        if (!_tags[x].Add)
+                            continue;
+                        this._tags.Add(_tags[x]);
+                        var trackItem = new BTrackList()
+                        {
+                            ID = this._tags.Count,
+                            Format = _tags[x].FormatInfo,
+                            Title = _tags[x].Title,
+                            Status = "Ожидание"
+                        };
+                        trackList.Items.Add(trackItem);
+                    }
+                    progress.Maximum = TTag.AddCount(this._tags.ToArray());
+                }
             }
-            _tags = new TTag[trackList.Items.Count];
-            progress.Maximum = _tags.Length;
         }
 
         private void BtnStart(object sender, RoutedEventArgs e)
         {
+            if (_tags.Count < 1 || namesFormat.Text.Length < 1) return;
             if (StartBtn.Tag.ToString() == "start")
             {
+                if (outPath.Text[outPath.Text.Length - 1] != '\\')
+                    outPath.Text += '\\';
+                string pattern = namesFormat.Text;
                 List<string> tracks = new List<string>();
                 if (_tags == null) return;
                 foreach (var item in _tags)
                     tracks.Add(item.FileName);
                 EncoderType enc = (EncoderType)encodersList.SelectedIndex;
-                app.Start(enc, tracks.ToArray(), _tags, outPath.Text);
+                app.Start(enc, tracks.ToArray(), _tags.ToArray(), pattern, outPath.Text);
                 LockUI(true);
             }
             else
@@ -208,6 +246,7 @@ namespace LikeEncoder
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadAppCfg();
+            Task.Factory.StartNew(ShowMemoryUsege);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -227,11 +266,14 @@ namespace LikeEncoder
 
         private void ShowEncoderPage()
         {
-            Page encPage;
+            Page encPage = new Page();
             switch ((EncoderType)encodersList.SelectedIndex)
             {
                 case EncoderType.OPUS:
-                    encPage = new OpusPage(OnEncoderValueChanged);
+                    encPage = new OpusPage(OnEncoderValueChanged, app._opusValue);
+                    break;
+                case EncoderType.MP3_LAME:
+                    encPage = new LamePage(OnEncoderValueChanged, app._lameValue);
                     break;
                 default:
                     encPage = new Page();
@@ -243,6 +285,28 @@ namespace LikeEncoder
         private void FormatChanged(object sender, SelectionChangedEventArgs e)
         {
             ShowEncoderPage();
+        }
+
+        private void BtnConfig_Click(object sender, RoutedEventArgs e)
+        {
+            new ConfigWnd().ShowDialog();
+        }
+
+        private void DeleteTrackBtn(object sender, RoutedEventArgs e)
+        {
+            if (trackList.SelectedIndex < 0) return;
+            List<TTag> inds = new List<TTag>();
+            List<object> objs = new List<object>();
+            foreach (var item in trackList.SelectedItems)
+            {
+                inds.Add(_tags[trackList.Items.IndexOf(item)]);
+                objs.Add(item);
+            }
+            for (int i = 0; i < inds.Count; i++)
+            {
+                _tags.Remove(inds[i]);
+                trackList.Items.Remove(objs[i]);
+            }
         }
     }
 }

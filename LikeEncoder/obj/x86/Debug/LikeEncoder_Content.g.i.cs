@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("enc/opus/opusenc.exe")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("enc/opus/opusenc.html")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("enc/opus/opusenc_old.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/preferences_system.png")]
 
 

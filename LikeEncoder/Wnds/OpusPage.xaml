@@ -30,16 +30,16 @@
             <Label Grid.Column="0" Grid.Row="5">Каналы:</Label>
             <Label Grid.Column="0" Grid.Row="6">Тип аудио:</Label>
 
-            <ComboBox x:Name="frequency" Grid.Column="1" Grid.Row="1" Margin="3,3,3,3" IsEnabled="False" SelectionChanged="ValueChanged"></ComboBox>
-            <ComboBox x:Name="bitrate" Grid.Column="1" Grid.Row="2" Margin="3,3,3,3" SelectionChanged="ValueChanged"></ComboBox>
-            <ComboBox x:Name="framesize" Grid.Column="1" Grid.Row="3" Margin="3,3,3,3" SelectionChanged="ValueChanged"></ComboBox>
-            <ComboBox x:Name="quality" Grid.Column="1" Grid.Row="4" Margin="3,3,3,3" SelectionChanged="ValueChanged"></ComboBox>
-            <ComboBox x:Name="channel" Grid.Column="1" Grid.Row="5" Margin="3,3,3,3" SelectionChanged="ValueChanged"></ComboBox>
+            <ComboBox x:Name="frequency" Grid.Column="1" Grid.Row="1" Margin="3,3,3,3" IsEnabled="False" SelectionChanged="ValueChanged" BorderBrush="#BFBFBF"></ComboBox>
+            <ComboBox x:Name="bitrate" Grid.Column="1" Grid.Row="2" Margin="3,3,3,3" SelectionChanged="ValueChanged" BorderBrush="#BFBFBF"></ComboBox>
+            <ComboBox x:Name="framesize" Grid.Column="1" Grid.Row="3" Margin="3,3,3,3" SelectionChanged="ValueChanged" BorderBrush="#BFBFBF"></ComboBox>
+            <ComboBox x:Name="quality" Grid.Column="1" Grid.Row="4" Margin="3,3,3,3" SelectionChanged="ValueChanged" BorderBrush="#BFBFBF"></ComboBox>
+            <ComboBox x:Name="channel" Grid.Column="1" Grid.Row="5" Margin="3,3,3,3" SelectionChanged="ValueChanged" BorderBrush="#BFBFBF"></ComboBox>
 
             <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Vertical">
-                <RadioButton x:Name="auto" Margin="3,3,3,3" IsChecked="True" Checked="auto_Checked">Автоматически</RadioButton>
-                <RadioButton x:Name="music" Margin="3,3,3,3" Checked="auto_Checked">Музыка</RadioButton>
-                <RadioButton x:Name="speech" Margin="3,3,3,3" Checked="auto_Checked">Речь</RadioButton>
+                <RadioButton x:Name="auto" Margin="3,3,3,3" IsChecked="True" Checked="auto_Checked" BorderBrush="#BFBFBF">Автоматически</RadioButton>
+                <RadioButton x:Name="music" Margin="3,3,3,3" Checked="auto_Checked" BorderBrush="#BFBFBF">Музыка</RadioButton>
+                <RadioButton x:Name="speech" Margin="3,3,3,3" Checked="auto_Checked" BorderBrush="#BFBFBF">Речь</RadioButton>
             </StackPanel>
             
         </Grid>

@@ -20,12 +20,31 @@ namespace lib
         {
             this.file = baseDirectory + file;
         }
+        public string[] GetKeys()
+        {
+            List<string> keys = new List<string>();
+            if (File.Exists(file))
+                all = File.ReadAllLines(file).ToList();
+            foreach (var item in all)
+            {
+                if (item.Length < 1) continue;
+                if (item[0] == '*')
+                    continue;
+                keys.Add(item.Split('=').First());
+            }
+            return keys.ToArray();
+        }
+
         public string Read(string key, string def)
         {
             if (File.Exists(file))
                 all = File.ReadAllLines(file).ToList();
             foreach (var item in all)
             {
+                if (item.Length < 1)
+                    continue;
+                if (item[0] == '*')
+                    continue;
                 if (key.Length >= item.Length)
                     continue;
                 var it = item.Remove(key.Length);
@@ -51,22 +70,33 @@ namespace lib
         {
             return Read(key).ToBool();
         }
+        public bool ReadBool(string key, bool def)
+        {
+            return Read(key, def.ToString()).ToBool();
+        }
         public void Write(string key, object value)
         {
-            if (File.Exists(file))
-                all = File.ReadAllLines(file).ToList();
-            for (int i = 0; i < all.Count; i++)
+            try
             {
-                if (key.Length >= all[i].Length)
-                    continue;
-                var itKey = all[i].Remove(key.Length);
-                if (itKey != key) continue;
-                all[i] = key + "=" + value;
+                if (File.Exists(file))
+                    all = File.ReadAllLines(file).ToList();
+                for (int i = 0; i < all.Count; i++)
+                {
+                    if (key.Length >= all[i].Length)
+                        continue;
+                    var itKey = all[i].Remove(key.Length);
+                    if (itKey != key) continue;
+                    all[i] = key + "=" + value;
+                    File.WriteAllLines(file, all.ToArray());
+                    return;
+                }
+                all.Add(key + "=" + value);
                 File.WriteAllLines(file, all.ToArray());
-                return;
             }
-            all.Add(key + "=" + value);
-            File.WriteAllLines(file, all.ToArray());
+            catch
+            {
+
+            }
         }
         public void Write(string key, Enum value)
         {

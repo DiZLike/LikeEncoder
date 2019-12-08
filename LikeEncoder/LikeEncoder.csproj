@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>audio_x_generic.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -57,6 +60,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Wnds\ConfigWnd.xaml.cs">
+      <DependentUpon>ConfigWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wnds\CueWnd.xaml.cs">
+      <DependentUpon>CueWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wnds\LamePage.xaml.cs">
+      <DependentUpon>LamePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Wnds\OpusPage.xaml.cs">
       <DependentUpon>OpusPage.xaml</DependentUpon>
     </Compile>
@@ -74,6 +86,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wnds\ConfigWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wnds\CueWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wnds\LamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,6 +141,12 @@
       <Project>{B26A81D4-BFC4-40EF-A715-D9749F731073}</Project>
       <Name>lib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="audio_x_generic.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\preferences_system.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

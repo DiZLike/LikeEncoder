@@ -9,6 +9,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using lib.NTrack;
 using lib.Encoders;
+using lib.Encoders.Opus;
+using lib.Encoders.Lame;
 
 namespace lib
 {
@@ -19,7 +21,8 @@ namespace lib
 
     public enum EncoderType
     {
-        OPUS = 0
+        OPUS = 0,
+        MP3_LAME = 1
     }
 
     public class BassApp
@@ -34,14 +37,19 @@ namespace lib
         private CancelHandler onCancel;
 
         private int threadCount = 4;
-        private Thread[] encodingThread;
+        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+        CancellationToken token;
+        private Task[] encodingTask;
         private List<Track> trackList;
         private TTag[] tags;
         private EncoderType encoderType;
         private string outFolder;
-        private bool isCanceled = false;
+        private string filePattern;
+        private Cfg app_cfg;
 
-        public static values param;
+        public AudioOpusValue _opusValue = new AudioOpusValue();
+        public AudioLameValue _lameValue = new AudioLameValue();
+
         public int TrackCount { get { return trackList.Count; } }
 
         public BassApp(IntPtr handle, ErrorHandler onError, ProgressHandler onProgress,
@@ -52,13 +60,15 @@ namespace lib
             this.onProgress = onProgress;
             this.onComplete = onComplete;
             this.onCancel = onCancel;
+            token = cancelTokenSource.Token;
+            app_cfg = new Cfg(Cfg.APP_CFG);
             Init();
         }
-
+        /*
         public void LoadParam()
         {
             var par = File.ReadAllLines(Cfg.PARAM_TXT);
-        }
+        }*/
 
         private void Init()
         {
@@ -70,20 +80,21 @@ namespace lib
                 Bass.BASS_PluginLoad(item);
         }
 
-        public void SetThreadCount(int count)
+        public void SetThreadCount()
         {
-            threadCount = count;
-            encodingThread = new Thread[threadCount];
+            threadCount = app_cfg.ReadInt("cores", Environment.ProcessorCount - 1) + 1;
+            encodingTask = new Task[threadCount];
             for (int i = 0; i < threadCount; i++)
-                encodingThread[i] = new Thread(new ThreadStart(BeginEncoding));
+                encodingTask[i] = new Task(BeginEncoding);
         }
 
-        public void Start(EncoderType encoderType, string[] tracks, TTag[] tags, string outputFolder)
+        public void Start(EncoderType encoderType, string[] tracks, TTag[] tags, string filePattern, string outputFolder)
         {
-            SetThreadCount(threadCount);
+            SetThreadCount();
             this.encoderType = encoderType;
             this.tags = tags;
             this.outFolder = outputFolder;
+            this.filePattern = filePattern;
             if (!Directory.Exists(outFolder))
                 Directory.CreateDirectory(outFolder);
 
@@ -97,15 +108,16 @@ namespace lib
 
             for (int i = 0; i < threadCount; i++)
             {
-                encodingThread[i].Start();
+                encodingTask[i].Start();
                 Thread.Sleep(500);
             }
         }
 
         public void Stop()
         {
-            foreach (var thread in encodingThread)
-                thread.Abort();
+            //foreach (var task in encodingTask)
+                //task
+            cancelTokenSource.Cancel();
             onCancel();
         }
 
@@ -113,23 +125,29 @@ namespace lib
         {
             for (int i = 0; i < trackList.Count; i++)
             {
+                if (token.IsCancellationRequested) return;
                 if (trackList[i].Complete || trackList[i].Started)
                     continue;
                 trackList[i].Started = true;
                 string of = Path.GetFileNameWithoutExtension(trackList[i].Name);
 
-                string ofn = outFolder + AudioTags.DirectoryStructPattern(@"[artist]\[year] - [album]\[trackNo] - [title]", tags[i]);
+                string ofn = outFolder + AudioTags.DirectoryStructPattern(filePattern, tags[i]);
                 if (!Directory.Exists(Path.GetDirectoryName(ofn)))
                     Directory.CreateDirectory(Path.GetDirectoryName(ofn));
-                
+
+                _opusValue.SaveParam(_opusValue.CFG);
+                _lameValue.SaveParam(_lameValue.CFG);
                 switch (encoderType)
                 {
                     case EncoderType.OPUS:
                         ofn += ".opus";
-                        var opus = new AudioOpus();
-                        opus.SaveParam();
-                        opus.Start(trackList[i].Name, ofn, i,
-                            onProgress, onError);
+                        new AudioOpus(token).Start(trackList[i].Name, ofn, i, 
+                            tags[i].TimeStart, tags[i].TimeEnd, _opusValue, onProgress, onError);
+                        break;
+                    case EncoderType.MP3_LAME:
+                        ofn += ".mp3";
+                        new AudioLame(token).Start(trackList[i].Name, ofn, i,
+                            tags[i].TimeStart, tags[i].TimeEnd, _lameValue, onProgress, onError);
                         break;
                 }
                 

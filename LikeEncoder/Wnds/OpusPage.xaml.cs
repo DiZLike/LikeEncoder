@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using lib;
 using lib.Encoders;
+using lib.Encoders.Opus;
 
 namespace LikeEncoder.Wnds
 {
@@ -22,64 +23,58 @@ namespace LikeEncoder.Wnds
     public partial class OpusPage : Page
     {
         ValueChangedHandler onValueChanged;
-        AudioOpus opus;
+        private AudioOpusValue opus;
 
-        public OpusPage(ValueChangedHandler onValueChanged)
+        public OpusPage(ValueChangedHandler onValueChanged, AudioOpusValue opus)
         {
             InitializeComponent();
             this.onValueChanged = onValueChanged;
+            this.opus = opus;
             LoadEncoderOptions();
             LoadEncoderParameters();
+            onValueChanged(opus.Format());
         }
-        private void LoadEncoderParameters()
-        {
-            opus = new AudioOpus();
-            opus.LoadParams();
-
-            var br = BassApp.param["bitrate"].ToString();
-            for (int i = 0; i < bitrate.Items.Count; i++)
-            {
-                if (bitrate.Items[i].ToString() == br)
-                    bitrate.SelectedIndex = i;
-            }
-            framesize.Text = BassApp.param["framesize"].ToString();
-            quality.Text = BassApp.param["quality"].ToString();
-            channel.SelectedIndex = BassApp.param["channel"].ToInt();
-            if (BassApp.param["music"].ToBool())
-                music.IsChecked = true;
-            if (BassApp.param["speech"].ToBool())
-                speech.IsChecked = true;
-        }
-
+        
         private void LoadEncoderOptions()
         {
-            Cfg cfg = new Cfg(Cfg.ENC_CFG);
-            var _bitrate = cfg.Read("opus_bitrate").Split(',');
-            var _framesize = cfg.Read("opus_framesize").Split(',');
-            var _quality = cfg.Read("opus_quality").Split(',');
-            var _channel = cfg.Read("opus_channel").Split(',');
-
             frequency.Items.Add("48000");
             frequency.SelectedIndex = 0;
 
-            bitrate.ItemsSource = _bitrate;
-            framesize.ItemsSource = _framesize;
-            quality.ItemsSource = _quality;
-            channel.ItemsSource = _channel;
+            bitrate.ItemsSource = opus.VBitrates;
+            framesize.ItemsSource = opus.VFramesizes;
+            quality.ItemsSource = opus.VQualityes;
+            channel.ItemsSource = opus.VChannels;
         }
+
+        private void LoadEncoderParameters()
+        {
+            opus.LoadParams(opus.CFG);
+            if (opus.EncParam["music"].ToBool())
+                music.IsChecked = true;
+            if (opus.EncParam["speech"].ToBool())
+                speech.IsChecked = true;
+
+            bitrate.SelectedIndex = opus.EncParam["bitrate"].ToInt();
+            framesize.SelectedIndex = opus.EncParam["framesize"].ToInt();
+            quality.SelectedIndex = opus.EncParam["quality"].ToInt();
+            channel.SelectedIndex = opus.EncParam["channel"].ToInt();
+        }
+
         private void ValueChanged()
         {
-            if (opus == null || bitrate.SelectedIndex < 0
+            if (bitrate.SelectedIndex < 0
                 || framesize.SelectedIndex < 0
                 || quality.SelectedIndex < 0
                 || channel.SelectedIndex < 0)
                 return;
-            BassApp.param["bitrate"] = bitrate.Items[bitrate.SelectedIndex].ToString();
-            BassApp.param["framesize"] = framesize.Items[framesize.SelectedIndex].ToString();
-            BassApp.param["quality"] = quality.Items[quality.SelectedIndex].ToString();
-            BassApp.param["channel"] = channel.SelectedIndex;
-            BassApp.param["music"] = music.IsChecked;
-            BassApp.param["speech"] = speech.IsChecked;
+
+            opus.EncParam["bitrate"] = bitrate.SelectedIndex;
+            opus.EncParam["framesize"] = framesize.SelectedIndex;
+            opus.EncParam["quality"] = quality.SelectedIndex;
+            opus.EncParam["channel"] = channel.SelectedIndex;
+            opus.EncParam["music"] = music.IsChecked;
+            opus.EncParam["speech"] = speech.IsChecked;
+
             onValueChanged(opus.Format());
         }
 

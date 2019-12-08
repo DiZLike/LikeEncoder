@@ -1,0 +1,22 @@
+﻿<Window x:Class="LikeEncoder.Wnds.CueWnd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CueWnd" Height="350" Width="500" WindowStartupLocation="CenterScreen">
+    <Border BorderBrush="#BFBFBF" BorderThickness="1" Margin="3,3,3,3">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width=".2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height=".1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" >
+                <Label Background="#BFBFBF" FontWeight="Bold" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">Cue лист</Label>
+                <ListBox x:Name="cue" BorderBrush="#BFBFBF" Margin="3,3,3,3"></ListBox>
+            </StackPanel>
+            <Button Grid.Column="1" Grid.Row="1" Margin="3,3,3,3" BorderBrush="#BFBFBF" Style="{StaticResource RoundedButton}" Click="Ok" >Ok</Button>
+        </Grid>
+    </Border>
+</Window>
