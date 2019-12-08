@@ -30,6 +30,7 @@ namespace lib.NTrack
             this.file = file;
             Task.Factory.StartNew(LoadTags);
         }
+<<<<<<< HEAD
         /// <summary>
         /// For CUE File
         /// </summary>
@@ -74,6 +75,17 @@ namespace lib.NTrack
                 _tags.Add(newTTag);
             }
             return _tags.ToArray();
+=======
+
+        public AudioTags(string file)
+        {
+            this.file = file;
+
+
+
+
+            LoadTags();
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
         }
 
         public static void SaveTags(string file, TTag tag)

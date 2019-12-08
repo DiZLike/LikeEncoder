@@ -108,6 +108,7 @@ enc\opus\opusenc --bitrate 56 --framesize 60 --comp 9 - "C:\Documents and Settin
 enc\opus\opusenc --bitrate 56 --framesize 60 --comp 9 - "C:\Documents and Settings\admin\Desktop\Water & Wind (Elemental Skylands).opus"
 enc\opus\opusenc --bitrate 56 --framesize 60 --comp 9 - "C:\Documents and Settings\admin\Desktop\Water & Wind (Elemental Skylands).opus"
 enc\opus\opusenc --bitrate 56 --framesize 60 --comp 9 - "C:\Documents and Settings\admin\Desktop\.opus"
+<<<<<<< HEAD
 enc\mp3\lame --abr 48 -m f -q 9 --lowpass 22050 --resample 44.1 - "C:\Documents and Settings\admin\Desktop\Hills Of Intent (Autumn Hills).mp3"
 enc\mp3\lame --abr 48 -m f -q 9 --lowpass 22050 --resample 44.1 - "C:\Documents and Settings\admin\Desktop\Remembered And Forgotten (Forlorn Temple).mp3"
 enc\opus\opusenc --bitrate 56 --framesize 60 --comp 9 - "C:\Documents and Settings\admin\Desktop\.opus"
@@ -335,3 +336,5 @@ enc\opus\opusenc --bitrate 40 --framesize 60 --comp 10 --music - "C:\Documents a
 enc\opus\opusenc --bitrate 24 --framesize 60 --comp 10 --music - "C:\Documents and Settings\admin\Desktop\Наважденье.opus"
 enc\opus\opusenc --bitrate 24 --framesize 60 --comp 10 --music - "C:\Documents and Settings\admin\Desktop\Матричный Бог.opus"
 enc\opus\opusenc --bitrate 40 --framesize 60 --comp 10 --music - "C:\Documents and Settings\admin\Desktop\05 - Матричный Бог.opus"
+=======
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2

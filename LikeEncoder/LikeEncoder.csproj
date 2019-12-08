@@ -60,12 +60,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+<<<<<<< HEAD
     <Compile Include="Wnds\ConfigWnd.xaml.cs">
       <DependentUpon>ConfigWnd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Wnds\CueWnd.xaml.cs">
       <DependentUpon>CueWnd.xaml</DependentUpon>
     </Compile>
+=======
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
     <Compile Include="Wnds\LamePage.xaml.cs">
       <DependentUpon>LamePage.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
     <Page Include="Wnds\ConfigWnd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,6 +101,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+=======
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
     <Page Include="Wnds\LamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -145,9 +151,12 @@
   <ItemGroup>
     <Resource Include="audio_x_generic.ico" />
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup>
     <Resource Include="Images\preferences_system.png" />
   </ItemGroup>
+=======
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

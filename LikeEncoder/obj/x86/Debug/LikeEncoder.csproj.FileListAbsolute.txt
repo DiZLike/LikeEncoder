@@ -19,9 +19,45 @@ D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\G
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.exe
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.pdb
+<<<<<<< HEAD
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.baml
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.g.cs
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.baml
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.g.cs
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.baml
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.g.cs
+=======
+<<<<<<< HEAD
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.baml
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.g.cs
+=======
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Styles.baml
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\App.baml
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\bin\Debug\lib.dll
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.dll
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\bin\Debug\lib.pdb
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.baml
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.g.cs
+D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\bin\Debug\taglib.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.exe
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.pdb
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.pdb
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\bin\Debug\lib.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\bin\Debug\taglib.dll
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\bin\Debug\lib.pdb
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csprojResolveAssemblyReference.cache
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.baml
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\Styles.baml
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.baml
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\App.baml
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.g.cs
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\App.g.cs
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder_MarkupCompile.cache
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.g.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.Properties.Resources.resources
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csproj.GenerateResource.Cache
+>>>>>>> 58bfb773b28e99cf52281248c35db62c296c6ce1
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2

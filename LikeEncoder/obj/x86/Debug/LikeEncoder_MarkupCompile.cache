@@ -4,17 +4,34 @@
 winexe
 C#
 .cs
-D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\
 LikeEncoder
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\App.xaml
+<<<<<<< HEAD
 6-147789731
 
 102092705820
 151067682338
 MainWindow.xaml;Styles.xaml;Wnds\ConfigWnd.xaml;Wnds\CueWnd.xaml;Wnds\LamePage.xaml;Wnds\OpusPage.xaml;
+=======
+4-452816004
+
+81027950905
+151067682338
+MainWindow.xaml;Styles.xaml;Wnds\LamePage.xaml;Wnds\OpusPage.xaml;
+=======
+C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\App.xaml
+32022141315
+
+71334048987
+15-1139894178
+MainWindow.xaml;Styles.xaml;Wnds\OpusPage.xaml;
+>>>>>>> 58bfb773b28e99cf52281248c35db62c296c6ce1
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
 
 False
 

@@ -36,16 +36,24 @@ namespace lib
         private CompleteHandler onComplete;
         private CancelHandler onCancel;
 
+<<<<<<< HEAD
         private int threadCount = 4;
         CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
         CancellationToken token;
         private Task[] encodingTask;
+=======
+        private int threadCount = 1;
+        private Thread[] encodingThread;
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
         private List<Track> trackList;
         private TTag[] tags;
         private EncoderType encoderType;
         private string outFolder;
         private string filePattern;
+<<<<<<< HEAD
         private Cfg app_cfg;
+=======
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
 
         public AudioOpusValue _opusValue = new AudioOpusValue();
         public AudioLameValue _lameValue = new AudioLameValue();
@@ -141,12 +149,22 @@ namespace lib
                 {
                     case EncoderType.OPUS:
                         ofn += ".opus";
+<<<<<<< HEAD
                         new AudioOpus(token).Start(trackList[i].Name, ofn, i, 
+=======
+                        _opusValue.SaveParam(_opusValue.CFG);
+                        new AudioOpus().Start(trackList[i].Name, ofn, i, 
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
                             tags[i].TimeStart, tags[i].TimeEnd, _opusValue, onProgress, onError);
                         break;
                     case EncoderType.MP3_LAME:
                         ofn += ".mp3";
+<<<<<<< HEAD
                         new AudioLame(token).Start(trackList[i].Name, ofn, i,
+=======
+                        _lameValue.SaveParam(_lameValue.CFG);
+                        new AudioLame().Start(trackList[i].Name, ofn, i,
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
                             tags[i].TimeStart, tags[i].TimeEnd, _lameValue, onProgress, onError);
                         break;
                 }

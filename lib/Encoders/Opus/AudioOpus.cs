@@ -4,13 +4,19 @@ using System.Linq;
 using System.Text;
 using Un4seen.Bass.AddOn.Enc;
 using lib.Encoders.Opus;
+<<<<<<< HEAD
 using System.Threading;
+=======
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
 
 namespace lib.Encoders.Lame
 {
     public class AudioOpus : AudioEncoder
     {
+<<<<<<< HEAD
         public AudioOpus(CancellationToken token) : base(token) { }
+=======
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
         public override void Start(string sourceAudio, string exitAudio, int index, double startPos,
             double endPos, EncoderValue encval, ProgressHandler onProgress, ErrorHandler onError)
         {

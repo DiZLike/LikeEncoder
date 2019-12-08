@@ -19,6 +19,7 @@ namespace lib
         protected int index;
         protected int stream;
         protected int mixer;
+<<<<<<< HEAD
         private CancellationToken token;
 
         protected double startPos = 0;
@@ -42,6 +43,20 @@ namespace lib
         public virtual void Start(string sourceAudio, string exitAudio, int index, double startPos,
             double endPos, EncoderValue ev, ProgressHandler onProgress, ErrorHandler onError)
         {
+=======
+
+        protected double startPos = 0;
+        protected double endPos = 0;
+
+        private int enc;
+        protected StringBuilder sbCmd;
+        protected string cmd;
+        protected EncoderValue ev;
+
+        public virtual void Start(string sourceAudio, string exitAudio, int index, double startPos,
+            double endPos, EncoderValue ev, ProgressHandler onProgress, ErrorHandler onError)
+        {
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
             this.onProgress = onProgress;
             this.onError = onError;
             this.index = index;
@@ -78,9 +93,14 @@ namespace lib
         }
         protected void StartEncode()
         {
+<<<<<<< HEAD
             byte[] _encBuffer = new byte[(int)Math.Pow(2, buffer + 4)];
             while (Bass.BASS_ChannelIsActive(mixer) == BASSActive.BASS_ACTIVE_PLAYING
                 && !token.IsCancellationRequested)
+=======
+            byte[] _encBuffer = new byte[1024];
+            while (Bass.BASS_ChannelIsActive(mixer) == BASSActive.BASS_ACTIVE_PLAYING)
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
             {
                 Bass.BASS_ChannelGetData(mixer, _encBuffer, _encBuffer.Length);
                 long length = Bass.BASS_ChannelGetLength(stream);
@@ -92,7 +112,11 @@ namespace lib
                 if (startPos == 0 && endPos == 0)
                 {
                     int progress = (int)((float)pos / (float)length * 100f);
+<<<<<<< HEAD
                     if (progress % 5 == 0 || progress >= 99)
+=======
+                    if (progress % 5 == 0)
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
                         onProgress(index, progress);
                 }
                 else
@@ -102,8 +126,12 @@ namespace lib
                     float fstartPos = (float)startPos;
 
                     int progress = (int)((posSec - fstartPos) / (endPos - startPos) * 100f);
+<<<<<<< HEAD
                     if (progress % 5 == 0 || progress >= 99)
                         onProgress(index, progress);
+=======
+                    onProgress(index, progress);
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
                 }
             }
             BassEnc.BASS_Encode_Stop(enc);

@@ -49,15 +49,26 @@ namespace LikeEncoder.Wnds
         private void LoadEncoderParameters()
         {
             opus.LoadParams(opus.CFG);
+<<<<<<< HEAD
             if (opus.EncParam["music"].ToBool())
                 music.IsChecked = true;
             if (opus.EncParam["speech"].ToBool())
                 speech.IsChecked = true;
 
+=======
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
             bitrate.SelectedIndex = opus.EncParam["bitrate"].ToInt();
             framesize.SelectedIndex = opus.EncParam["framesize"].ToInt();
             quality.SelectedIndex = opus.EncParam["quality"].ToInt();
             channel.SelectedIndex = opus.EncParam["channel"].ToInt();
+<<<<<<< HEAD
+=======
+
+            if (opus.EncParam["music"].ToBool())
+                music.IsChecked = true;
+            if (opus.EncParam["speech"].ToBool())
+                speech.IsChecked = true;
+>>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
         }
 
         private void ValueChanged()
