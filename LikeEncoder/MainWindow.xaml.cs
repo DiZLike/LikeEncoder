@@ -11,11 +11,6 @@ using lib.NTrack;
 using LikeEncoder.Wnds;
 using System.Threading.Tasks;
 using System.Threading;
-<<<<<<< HEAD
-=======
-using lib.Encoders.Opus;
-using lib.Cue;
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
 
 namespace LikeEncoder
 {
@@ -26,12 +21,14 @@ namespace LikeEncoder
     /// </summary>
     public partial class MainWindow : Window
     {
-        private BassApp app;
+        private EncApp app;
         private List<TTag> _tags = new List<TTag>();
+        private PlayWnd playWnd;
+
         public MainWindow()
         {
             InitializeComponent();
-            app = new BassApp(IntPtr.Zero, OnError, OnProgress, OnComplete, OnCancel);
+            app = new EncApp(IntPtr.Zero, OnError, OnProgress, OnComplete, OnCancel);
             Load();
         }
 
@@ -77,13 +74,8 @@ namespace LikeEncoder
                 Title = tags.ArtistTitle,
                 Status = "Ожидание"
             };
-<<<<<<< HEAD
             trackList.Dispatcher.BeginInvoke(new Action<BTrackList>((i) => trackList.Items[tags.Index] = i), trackItem);
             progress.Dispatcher.BeginInvoke(new Action<int>((i) => progress.Maximum = i), _tags.Count);
-=======
-            trackList.Dispatcher.Invoke(new Action<BTrackList>((i) => trackList.Items[tags.Index] = i), trackItem);
-            progress.Dispatcher.Invoke(new Action<int>((i) => progress.Maximum = i), _tags.Count);
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
         }
         private void OnEncoderValueChanged(string encoderInfo)
         {
@@ -151,29 +143,16 @@ namespace LikeEncoder
 
         }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
         private void ShowMemoryUsege()
         {
             while (true)
             {
-<<<<<<< HEAD
                 this.Dispatcher.BeginInvoke(new Action<double>((d) 
-=======
-                this.Dispatcher.Invoke(new Action<double>((d) 
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
                     => this.Title = d.ToString()), Sys.MemoryUsege());
                 Thread.Sleep(1000);
             }
         }
 
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 58bfb773b28e99cf52281248c35db62c296c6ce1
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
         private void Load()
         {
             var encs = System.IO.File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\enc\encoders.txt");
@@ -186,37 +165,14 @@ namespace LikeEncoder
             var cfg = new Cfg(Cfg.ENC_CFG);
             int defenc = cfg.Read("default_encoder").ToInt();
             encodersList.SelectedIndex = defenc;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-            switch ((EncoderType)defenc)
-            {
-                case EncoderType.OPUS:
-                    var opus = new AudioOpus();
-                    opus.LoadParams();
-                    formatTitle.Text = opus.Format();
-                    break;
-            }
-            ShowEncoderPage();
->>>>>>> 58bfb773b28e99cf52281248c35db62c296c6ce1
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
             cfg = new Cfg(Cfg.APP_CFG);
             var fn = cfg.Read("nameformat").Split(',');
             foreach (var item in fn)
                 namesFormat.Items.Add(item);
         }
 
-        private void BtnAddTrack_Click(object sender, RoutedEventArgs e)
+        private void AddFiles(string[] tracks)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Multiselect = true;
-            var cfg = new Cfg(Cfg.APP_CFG);
-            ofd.Filter = cfg.Read("openfiles");
-            bool? b = ofd.ShowDialog();
-            if (!b.Value) return;
-            var tracks = ofd.FileNames;
-
             for (int i = 0; i < tracks.Length; i++)
             {
                 var ext = System.IO.Path.GetExtension(tracks[i]);
@@ -234,13 +190,12 @@ namespace LikeEncoder
                 }
                 else
                 {
-<<<<<<< HEAD
                     var at = new AudioTags(tracks[i]);
                     TTag[] _tags = at.LoadCue();
                     var cueWnd = new CueWnd(_tags);
                     cueWnd.ShowDialog();
                     _tags = cueWnd.tags;
-                    
+
                     for (int x = 0; x < _tags.Length; x++)
                     {
                         if (!_tags[x].Add)
@@ -257,51 +212,20 @@ namespace LikeEncoder
                     }
                     progress.Maximum = TTag.AddCount(this._tags.ToArray());
                 }
-=======
-                    CueFile cue = new CueFile(tracks[i]);
-                    var at = new AudioTags(cue.File);
-                    string[] tm = at.Tags.Duration.Split(':');
-
-                    for (int x = 0; x < cue.Tracks.Count; x++)
-                    {
-                        var t = cue.Tracks[x];
-                        at.Tags.Album = cue.Title;
-                        at.Tags.TrackNo = (x + 1).ToString();
-                        at.Tags.Artist = cue.Performer;
-                        at.Tags.Title = t.Title;
-                        at.Tags.TimeStart = t.Seconds;
-
-                        if (x + 1 < cue.Tracks.Count)
-                        {
-                            at.Tags.TimeEnd = cue.Tracks[x + 1].Seconds;
-                            TimeSpan ts = new TimeSpan(0, 0, (int)at.Tags.TimeEnd - (int)at.Tags.TimeStart);
-                            at.Tags.Duration = ts.ToString("mm':'ss");
-                        }
-                        else
-                        {
-                            TimeSpan ts = new TimeSpan(0, tm[0].ToInt(), tm[1].ToInt()).Subtract(
-                                new TimeSpan(0, 0, (int)at.Tags.TimeStart));
-                            at.Tags.Duration = ts.ToString("mm':'ss");
-                        }
-
-                        _tags.Add(at.Tags);
-
-                        var trackItem = new BTrackList()
-                        {
-                            ID = _tags.Count,
-                            Format = _tags[x].FormatInfo,
-                            Title = at.Tags.Title,
-                            Status = "Ожидание"
-                        };
-                        trackList.Items.Add(trackItem);
-
-                        
-                    }
-                }
-
-
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
             }
+        }
+
+        private void BtnAddTrack_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Multiselect = true;
+            var cfg = new Cfg(Cfg.APP_CFG);
+            ofd.Filter = cfg.Read("openfiles");
+            bool? b = ofd.ShowDialog();
+            if (!b.Value) return;
+            var tracks = ofd.FileNames;
+
+            AddFiles(tracks);
         }
 
         private void BtnStart(object sender, RoutedEventArgs e)
@@ -309,11 +233,8 @@ namespace LikeEncoder
             if (_tags.Count < 1 || namesFormat.Text.Length < 1) return;
             if (StartBtn.Tag.ToString() == "start")
             {
-<<<<<<< HEAD
                 if (outPath.Text[outPath.Text.Length - 1] != '\\')
                     outPath.Text += '\\';
-=======
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
                 string pattern = namesFormat.Text;
                 List<string> tracks = new List<string>();
                 if (_tags == null) return;
@@ -393,6 +314,46 @@ namespace LikeEncoder
                 _tags.Remove(inds[i]);
                 trackList.Items.Remove(objs[i]);
             }
+        }
+
+        private void DemoBtn(object sender, RoutedEventArgs e)
+        {
+            if (trackList.SelectedIndex < 0) return;
+            new DemoConvWnd(_tags[trackList.SelectedIndex].FileName).ShowDialog();
+        }
+
+        private void trackList_DragEnter(object sender, DragEventArgs e)
+        {
+            
+        }
+
+        private void trackList_Drop(object sender, DragEventArgs e)
+        {
+            e.Effects = DragDropEffects.None;
+            var files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            AddFiles(files);
+        }
+
+        private void ClearTrackBtn(object sender, RoutedEventArgs e)
+        {
+            trackList.Items.Clear();
+            _tags.Clear();
+        }
+
+        private void PlayBtn(object sender, RoutedEventArgs e)
+        {
+            if (trackList.SelectedIndex < 0) return;
+            playWnd = new PlayWnd(_tags);
+            playWnd.Show();
+        }
+
+        private void trackList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int ind = trackList.SelectedIndex;
+            if (playWnd == null) return;
+
+            playWnd.Index = ind;
+
         }
     }
 }

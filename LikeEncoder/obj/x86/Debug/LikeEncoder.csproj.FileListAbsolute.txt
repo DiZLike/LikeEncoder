@@ -19,45 +19,190 @@ D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\G
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.exe
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.pdb
-<<<<<<< HEAD
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.baml
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.g.cs
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.baml
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.g.cs
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.baml
 D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.g.cs
-=======
-<<<<<<< HEAD
-D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.baml
-D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.g.cs
-=======
-D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Styles.baml
-D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\App.baml
-D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\bin\Debug\lib.dll
-D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.dll
-D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\bin\Debug\lib.pdb
-D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.baml
-D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.g.cs
-D:\Personal\Evgeny\Проекты\C#_new\LikeEncoder\LikeEncoder\bin\Debug\taglib.dll
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.exe
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.pdb
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.pdb
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\bin\Debug\lib.dll
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.dll
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\bin\Debug\taglib.dll
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\bin\Debug\lib.pdb
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csprojResolveAssemblyReference.cache
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.baml
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\Styles.baml
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.baml
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\App.baml
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.g.cs
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.g.cs
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\App.g.cs
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder_MarkupCompile.cache
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.g.resources
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.Properties.Resources.resources
-C:\Users\Evgeny\Documents\GitHub\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csproj.GenerateResource.Cache
->>>>>>> 58bfb773b28e99cf52281248c35db62c296c6ce1
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.exe
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.pdb
+G:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe
+G:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.pdb
+G:\Code\LikeEncoder\LikeEncoder\bin\Debug\lib.dll
+G:\Code\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.dll
+G:\Code\LikeEncoder\LikeEncoder\bin\Debug\taglib.dll
+G:\Code\LikeEncoder\LikeEncoder\bin\Debug\lib.pdb
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csprojResolveAssemblyReference.cache
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.baml
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Styles.baml
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.baml
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.baml
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.baml
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.baml
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\App.baml
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.g.cs
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.g.cs
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.g.cs
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.g.cs
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.g.cs
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\App.g.cs
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder_MarkupCompile.cache
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.g.resources
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.Properties.Resources.resources
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csproj.GenerateResource.Cache
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.exe
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.pdb
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.pdb
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\lib.dll
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.dll
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\taglib.dll
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\lib.pdb
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.baml
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Styles.baml
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.baml
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.baml
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.baml
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.baml
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\App.baml
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.g.cs
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.g.cs
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.g.cs
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.g.cs
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.g.cs
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\App.g.cs
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder_MarkupCompile.cache
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.g.resources
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.Properties.Resources.resources
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\DemoConvWnd.baml
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\DemoConvWnd.g.cs
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\DemoConvWnd.baml
+G:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\DemoConvWnd.g.cs
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe.config
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\Apex.dll
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.dll
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.SceneGraph.dll
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.WinForms.dll
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.pdb
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.SceneGraph.pdb
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.WinForms.pdb
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.WPF.dll
+E:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.WPF.pdb
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\Spectrum.baml
+E:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\Spectrum.g.cs
+H:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe.config
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.exe
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.pdb
+H:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe
+H:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.pdb
+H:\Code\LikeEncoder\LikeEncoder\bin\Debug\lib.dll
+H:\Code\LikeEncoder\LikeEncoder\bin\Debug\taglib.dll
+H:\Code\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.dll
+H:\Code\LikeEncoder\LikeEncoder\bin\Debug\lib.pdb
+H:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.pdb
+H:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.SceneGraph.pdb
+H:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.WinForms.pdb
+H:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.WPF.pdb
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csprojResolveAssemblyReference.cache
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.baml
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Styles.baml
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.baml
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.baml
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\DemoConvWnd.baml
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.baml
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.baml
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\Spectrum.baml
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\App.baml
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.g.cs
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.g.cs
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.g.cs
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\DemoConvWnd.g.cs
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.g.cs
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.g.cs
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\Spectrum.g.cs
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\App.g.cs
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder_MarkupCompile.cache
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.g.resources
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.Properties.Resources.resources
+H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csproj.GenerateResource.Cache
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe.config
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.exe
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.pdb
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.pdb
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\lib.dll
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.dll
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\taglib.dll
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\lib.pdb
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.pdb
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.SceneGraph.pdb
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.WinForms.pdb
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.WPF.pdb
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\ResolveAssemblyReference.cache
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.baml
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Styles.baml
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.baml
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.baml
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\DemoConvWnd.baml
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.baml
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.baml
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\Spectrum.baml
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\App.baml
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.g.cs
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.g.cs
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.g.cs
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\DemoConvWnd.g.cs
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.g.cs
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.g.cs
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\Spectrum.g.cs
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\App.g.cs
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder_MarkupCompile.cache
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.g.resources
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.Properties.Resources.resources
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\GenerateResource.read.1.tlog
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\GenerateResource.write.1.tlog
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\changes.txt
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\PlayWnd.baml
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\PlayWnd.g.cs
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe.config
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.exe
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.pdb
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\bin\Debug\changes.txt
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.pdb
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\bin\Debug\lib.dll
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.dll
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\bin\Debug\taglib.dll
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\bin\Debug\lib.pdb
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.pdb
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.SceneGraph.pdb
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.WinForms.pdb
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.WPF.pdb
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csprojResolveAssemblyReference.cache
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.baml
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Styles.baml
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.baml
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.baml
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\DemoConvWnd.baml
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.baml
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.baml
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\PlayWnd.baml
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\Spectrum.baml
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\App.baml
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\ConfigWnd.g.cs
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\CueWnd.g.cs
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\DemoConvWnd.g.cs
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.g.cs
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.g.cs
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\PlayWnd.g.cs
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\Spectrum.g.cs
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\App.g.cs
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder_MarkupCompile.cache
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.g.resources
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.Properties.Resources.resources
+C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csproj.GenerateResource.Cache

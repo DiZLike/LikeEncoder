@@ -8,10 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-<<<<<<< HEAD
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/preferences_system.png")]
-=======
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("audio_x_generic.ico")]
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
 
 

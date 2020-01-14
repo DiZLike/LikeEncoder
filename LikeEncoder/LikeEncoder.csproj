@@ -11,7 +11,8 @@
     <RootNamespace>LikeEncoder</RootNamespace>
     <AssemblyName>LikeEncoder</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -39,6 +40,21 @@
     <ApplicationIcon>audio_x_generic.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Apex">
+      <HintPath>C:\Documents and Settings\admin\Desktop\New Folder (2)\Apex.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpGL">
+      <HintPath>C:\Documents and Settings\admin\Desktop\New Folder (2)\SharpGL.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpGL.SceneGraph">
+      <HintPath>C:\Documents and Settings\admin\Desktop\New Folder (2)\SharpGL.SceneGraph.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpGL.WinForms">
+      <HintPath>C:\Documents and Settings\admin\Desktop\New Folder (2)\SharpGL.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpGL.WPF">
+      <HintPath>C:\Documents and Settings\admin\Desktop\New Folder (2)\SharpGL.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -60,20 +76,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-<<<<<<< HEAD
     <Compile Include="Wnds\ConfigWnd.xaml.cs">
       <DependentUpon>ConfigWnd.xaml</DependentUpon>
     </Compile>
     <Compile Include="Wnds\CueWnd.xaml.cs">
       <DependentUpon>CueWnd.xaml</DependentUpon>
     </Compile>
-=======
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
+    <Compile Include="Wnds\DemoConvWnd.xaml.cs">
+      <DependentUpon>DemoConvWnd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Wnds\LamePage.xaml.cs">
       <DependentUpon>LamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Wnds\OpusPage.xaml.cs">
       <DependentUpon>OpusPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wnds\PlayWnd.xaml.cs">
+      <DependentUpon>PlayWnd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Wnds\Spectrum.xaml.cs">
+      <DependentUpon>Spectrum.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -92,7 +114,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-<<<<<<< HEAD
     <Page Include="Wnds\ConfigWnd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,13 +122,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-=======
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
+    <Page Include="Wnds\DemoConvWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Wnds\LamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Wnds\OpusPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wnds\PlayWnd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Wnds\Spectrum.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,6 +161,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -151,12 +183,9 @@
   <ItemGroup>
     <Resource Include="audio_x_generic.ico" />
   </ItemGroup>
-<<<<<<< HEAD
   <ItemGroup>
     <Resource Include="Images\preferences_system.png" />
   </ItemGroup>
-=======
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

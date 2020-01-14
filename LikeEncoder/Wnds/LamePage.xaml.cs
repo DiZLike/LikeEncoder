@@ -54,11 +54,7 @@ namespace LikeEncoder.Wnds
 
             frequency.SelectedIndex = lame.EncParam["frequency"].ToInt();
 
-<<<<<<< HEAD
             if (!vbr.IsChecked.Value && !vbrold.IsChecked.Value)
-=======
-            if (!vbr.IsChecked.Value)
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
             {
                 bitrate.SelectedIndex = lame.EncParam["bitrate"].ToInt();
             }
@@ -79,11 +75,7 @@ namespace LikeEncoder.Wnds
                 || channel.SelectedIndex < 0)
                 return;
             lame.EncParam["frequency"] = frequency.SelectedIndex;
-<<<<<<< HEAD
             if (!vbr.IsChecked.Value && !vbrold.IsChecked.Value)
-=======
-            if (!vbr.IsChecked.Value)
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
                 lame.EncParam["bitrate"] = bitrate.SelectedIndex;
             else
                 lame.EncParam["vbrmode"] = bitrate.SelectedIndex;
@@ -96,6 +88,7 @@ namespace LikeEncoder.Wnds
             lame.EncParam["vbrold"] = vbrold.IsChecked.Value;
             lame.EncParam["swapchannel"] = swap.IsChecked.Value;
 
+            lame.SaveParam(lame.CFG);
             onValueChanged(lame.Format());
         }
 
@@ -108,11 +101,7 @@ namespace LikeEncoder.Wnds
         {
             if (vbr == null) return;
             if (lame == null) return;
-<<<<<<< HEAD
             if (vbr.IsChecked.Value || vbrold.IsChecked.Value)
-=======
-            if (vbr.IsChecked.Value)
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
             {
                 bitrate.ItemsSource = lame.VVBRmodes;
                 bitrate.SelectedIndex = lame.EncParam["vbrmode"].ToInt();

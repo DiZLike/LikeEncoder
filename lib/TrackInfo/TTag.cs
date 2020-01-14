@@ -19,6 +19,8 @@ namespace lib.NTrack
         public double TimeStart { get; set; }
         public double TimeEnd { get; set; }
 
+        public float ReplayGain_TrackGain { get; set; }
+
         public string Codec { get; set; }
         public string Frequency { get; set; }
         public string Bitrate { get; set; }

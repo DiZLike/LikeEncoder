@@ -19,8 +19,8 @@ namespace lib
         protected int index;
         protected int stream;
         protected int mixer;
-<<<<<<< HEAD
-        private CancellationToken token;
+        //private CancellationToken token;
+        private bool cancel;
 
         protected double startPos = 0;
         protected double endPos = 0;
@@ -33,9 +33,9 @@ namespace lib
         private Cfg app_cfg;
         private int buffer;
 
-        public AudioEncoder(CancellationToken token)
+        public AudioEncoder()
         {
-            this.token = token;
+            //this.token = token;
             this.app_cfg = new Cfg(Cfg.APP_CFG);
             this.buffer = app_cfg.ReadInt("buffer", 6);
         }
@@ -43,20 +43,6 @@ namespace lib
         public virtual void Start(string sourceAudio, string exitAudio, int index, double startPos,
             double endPos, EncoderValue ev, ProgressHandler onProgress, ErrorHandler onError)
         {
-=======
-
-        protected double startPos = 0;
-        protected double endPos = 0;
-
-        private int enc;
-        protected StringBuilder sbCmd;
-        protected string cmd;
-        protected EncoderValue ev;
-
-        public virtual void Start(string sourceAudio, string exitAudio, int index, double startPos,
-            double endPos, EncoderValue ev, ProgressHandler onProgress, ErrorHandler onError)
-        {
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
             this.onProgress = onProgress;
             this.onError = onError;
             this.index = index;
@@ -80,10 +66,15 @@ namespace lib
 
             BASS_CHANNELINFO ci = new BASS_CHANNELINFO();
             Bass.BASS_ChannelGetInfo(stream, ci);
+
             mixer = BassMix.BASS_Mixer_StreamCreate(ev.Frequency, ci.chans, BASSFlag.BASS_STREAM_DECODE | BASSFlag.BASS_MIXER_END);
             BassMix.BASS_Mixer_StreamAddChannel(mixer, stream, 0);
 
+            // set opus gain = 0
+            Bass.BASS_ChannelSetAttribute(stream, (BASSAttribute)MyBASSAttribute.BASS_ATTRIB_OPUS_GAIN, 0);
+
             enc = BassEnc.BASS_Encode_Start(mixer, cmd, encodeFlags, null, IntPtr.Zero);
+
             if (enc == 0)
             {
                 onError(new Error(IntPtr.Zero, Error.ENCODER_START));
@@ -93,52 +84,49 @@ namespace lib
         }
         protected void StartEncode()
         {
-<<<<<<< HEAD
+            int progress = 0;
+            long length = 0;
+            long pos = 0;
+            double posSec = 0;
+            float fendPos = 0;
+            float fstartPos = 0;
+
             byte[] _encBuffer = new byte[(int)Math.Pow(2, buffer + 4)];
-            while (Bass.BASS_ChannelIsActive(mixer) == BASSActive.BASS_ACTIVE_PLAYING
-                && !token.IsCancellationRequested)
-=======
-            byte[] _encBuffer = new byte[1024];
-            while (Bass.BASS_ChannelIsActive(mixer) == BASSActive.BASS_ACTIVE_PLAYING)
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
+            while (Bass.BASS_ChannelIsActive(mixer) == BASSActive.BASS_ACTIVE_PLAYING && !cancel)
             {
                 Bass.BASS_ChannelGetData(mixer, _encBuffer, _encBuffer.Length);
-                long length = Bass.BASS_ChannelGetLength(stream);
-                long pos = Bass.BASS_ChannelGetPosition(stream);
+                length = Bass.BASS_ChannelGetLength(stream);
+                pos = Bass.BASS_ChannelGetPosition(stream);
 
                 if (Bass.BASS_ChannelBytes2Seconds(stream, pos) >= endPos && endPos != 0)
                     Bass.BASS_ChannelStop(stream);
 
                 if (startPos == 0 && endPos == 0)
-                {
-                    int progress = (int)((float)pos / (float)length * 100f);
-<<<<<<< HEAD
-                    if (progress % 5 == 0 || progress >= 99)
-=======
-                    if (progress % 5 == 0)
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
-                        onProgress(index, progress);
-                }
+                    progress = (int)((float)pos / (float)length * 100f);
                 else
                 {
-                    double posSec = Bass.BASS_ChannelBytes2Seconds(stream, pos);
-                    float fendPos = (float)endPos;
-                    float fstartPos = (float)startPos;
-
-                    int progress = (int)((posSec - fstartPos) / (endPos - startPos) * 100f);
-<<<<<<< HEAD
-                    if (progress % 5 == 0 || progress >= 99)
-                        onProgress(index, progress);
-=======
-                    onProgress(index, progress);
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
+                    posSec = Bass.BASS_ChannelBytes2Seconds(stream, pos);
+                    fendPos = (float)endPos;
+                    fstartPos = (float)startPos;
+                    progress = (int)((posSec - fstartPos) / (endPos - startPos) * 100f);
                 }
+
+                if (progress % 5 == 0 || progress >= 99)
+                    onProgress(index, progress);
             }
+            Bass.BASS_StreamFree(stream);
             BassEnc.BASS_Encode_Stop(enc);
         }
+
+        public void Cancel()
+        {
+            cancel = true;
+        }
+
+        /*
         public void SetPossition(double pos)
         {
             Bass.BASS_ChannelSetPosition(stream, Bass.BASS_ChannelSeconds2Bytes(stream, pos));
-        }
+        }*/
     }
 }

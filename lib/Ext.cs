@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Controls;
+using System.IO;
 
 namespace lib
 {
@@ -40,6 +41,23 @@ namespace lib
             //return text.Remove(index, value.Length);
             var s = text.Substring(index + value.Length, text.Length - index - value.Length);;
             return s;
+        }
+        public static string FilterSymbols(string path)
+        {
+            StringBuilder s = new StringBuilder();
+            var sym1 = Path.GetInvalidFileNameChars();
+            for (int x = 0; x < path.Length; x++)
+            {
+                bool ok = true;
+                for (int y = 0; y < sym1.Length; y++)
+                {
+                    if (path[x] == sym1[y])
+                        ok = false;
+                }
+                if (ok)
+                    s.Append(path[x]);
+            }
+            return s.ToString();
         }
     }
 }

@@ -1,0 +1,32 @@
+﻿<Window x:Class="LikeEncoder.Wnds.PlayWnd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PlayWnd" Height="177" Width="300" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+    <Border Margin="2,2,2,2" BorderBrush="#BFBFBF" BorderThickness="1">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="90" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23" />
+                <RowDefinition Height="27" />
+                <RowDefinition Height="27" />
+                <RowDefinition Height="27" />
+                <RowDefinition Height="27" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" TextBlock.FontWeight="Bold" Background="#DEDEDE">Воспроизведение</Label>
+            <Slider x:Name="pos" Grid.Row="1" Margin="3,3,3,3"></Slider>
+            <Label x:Name="lpos" Grid.Row="1" Grid.Column="1">#:## \ #:##</Label>
+            <Slider x:Name="vol" Grid.Row="2" Margin="3,3,3,3" ValueChanged="vol_ValueChanged" IsSnapToTickEnabled="True" SmallChange="1" Maximum="100" Value="100"></Slider>
+            <Label x:Name="lvol" Grid.Row="2" Grid.Column="1">###</Label>
+
+            <Button x:Name="btnPlay" Grid.Row="3" Margin="3,3,3,3" Style="{StaticResource RoundedButton}" Click="btnPlay_Click">Play</Button>
+            <Button x:Name="btnStop" Grid.Row="4" Margin="3,3,3,3" Style="{StaticResource RoundedButton}" Click="btnStop_Click">Stop</Button>
+
+            <Button x:Name="btnVst" Grid.Row="3" Grid.Column="1" Margin="3,3,3,3" Style="{StaticResource RoundedButton}" Click="btnVst_Click">VST</Button>
+
+        </Grid>
+    </Border>
+</Window>

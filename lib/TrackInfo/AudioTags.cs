@@ -10,6 +10,7 @@ using lib.Cue;
 using TagLib;
 using IO = System.IO;
 using System.Windows.Controls;
+using System.IO;
 
 namespace lib.NTrack
 {
@@ -30,7 +31,6 @@ namespace lib.NTrack
             this.file = file;
             Task.Factory.StartNew(LoadTags);
         }
-<<<<<<< HEAD
         /// <summary>
         /// For CUE File
         /// </summary>
@@ -75,17 +75,6 @@ namespace lib.NTrack
                 _tags.Add(newTTag);
             }
             return _tags.ToArray();
-=======
-
-        public AudioTags(string file)
-        {
-            this.file = file;
-
-
-
-
-            LoadTags();
->>>>>>> d29c2d4be9dea9162fcb9bc50a453536ab565ba2
         }
 
         public static void SaveTags(string file, TTag tag)
@@ -95,6 +84,7 @@ namespace lib.NTrack
             var tfile = TagLib.File.Create(file);
             var stfile = TagLib.File.Create(tag.FileName);
 
+            #region
             tfile.Tag.Album = stfile.Tag.Album;
             tfile.Tag.AlbumArtists = stfile.Tag.AlbumArtists;
             tfile.Tag.AlbumArtistsSort = stfile.Tag.AlbumArtistsSort;
@@ -148,12 +138,17 @@ namespace lib.NTrack
             tfile.Tag.Track = stfile.Tag.Track;
             tfile.Tag.TrackCount = stfile.Tag.TrackCount;
             tfile.Tag.Year = stfile.Tag.Year;
+            #endregion
 
             Cfg app_cfg = new Cfg(Cfg.APP_CFG);
             bool si = app_cfg.ReadBool("saveinfo", false);
             if (si)
-                tfile.Tag.Comment += tfile.Tag.Comment.Length > 0 ? "\n" + AddComment(tag) : AddComment(tag);
-
+            {
+                if (tfile.Tag.Comment == null)
+                    tfile.Tag.Comment = AddComment(tag);
+                else
+                    tfile.Tag.Comment += tfile.Tag.Comment.Length > 0 ? "\n" + AddComment(tag) : AddComment(tag);
+            }
             tfile.Save();
         }
         public static string AddComment(TTag tag)
@@ -208,7 +203,7 @@ namespace lib.NTrack
                 o = o.Replace(year, tag.Year);
             if (tag.TrackNo != null)
                 o = o.Replace(trackno, tag.TrackNo);
-            o = o.Replace(filename, tag.FileName);
+            o = o.Replace(filename, Path.GetFileNameWithoutExtension(tag.FileName));
 
             return o;
         }
@@ -218,6 +213,17 @@ namespace lib.NTrack
             Tags = new TTag();
             Tags.Index = index;
             var info = BassTags.BASS_TAG_GetFromFile(file);
+            byte[] data = new byte[1];
+
+            foreach (var item in info.NativeTags)
+            {
+                if (item.Contains("METADATA_BLOCK_PICTURE"))
+                    data = Convert.FromBase64String(info.NativeTag("METADATA_BLOCK_PICTURE"));
+            }
+
+            var f = new IO.FileInfo(file);
+            float size = (f.Length - data.Length) / 1024f;
+            var bitrate = size / info.duration * 8;
 
             Tags.Album = info.album;
             Tags.Artist = info.artist;
@@ -228,9 +234,17 @@ namespace lib.NTrack
 
             Tags.Codec = GetCodec(info.channelinfo.ctype);
             Tags.Frequency = Math.Round((float)info.channelinfo.freq / 1000f, 1).ToString() + " kHz";
-            Tags.Bitrate = info.bitrate + " kBit";
+
+            if (data.Length > 1)
+                Tags.Bitrate = Math.Round(bitrate, 0) + " kBit";
+            else
+                Tags.Bitrate = info.bitrate + " kBit";
+
             Tags.Channels = GetChannel(info.channelinfo.chans);
             Tags.Duration = new TimeSpan(0, 0, 0, (int)info.duration).ToString("mm':'ss");
+            Tags.ReplayGain_TrackGain = info.replaygain_track_gain;
+
+
             info = null;
             if (onLoadTags != null)
                 onLoadTags(Tags);
@@ -244,6 +258,8 @@ namespace lib.NTrack
                     return "Opus";
                 case BASSChannelType.BASS_CTYPE_STREAM_FLAC:
                     return "FLAC";
+                case BASSChannelType.BASS_CTYPE_STREAM_MP3:
+                    return "MP3";
                 default:
                     return "Unknown";
             }

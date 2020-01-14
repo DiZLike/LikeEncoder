@@ -10,7 +10,11 @@ namespace lib
     {
         public static void Log(string msg)
         {
-            File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "app.log", msg + "\r\n");
+            try
+            {
+                File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + "app.log", msg + "\r\n");
+            }
+            catch { }
         }
     }
 }
