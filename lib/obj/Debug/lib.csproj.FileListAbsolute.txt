@@ -43,3 +43,4 @@ C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\lib\bin\Debug\
 C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\lib\obj\Debug\lib.csprojResolveAssemblyReference.cache
 C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\lib\obj\Debug\lib.dll
 C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\lib\obj\Debug\lib.pdb
+I:\Code\LikeEncoder\lib\bin\Debug\Bass.Net.pdb

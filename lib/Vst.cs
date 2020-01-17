@@ -12,13 +12,18 @@ namespace lib
 {
     public delegate void test(float val);
     public delegate void OnChange(float val);
+    public delegate void SCANPROC(float targetDB, float peakRMS);
     public class Vst
     {
         private string maximazer = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "vst_plugins", "iZotope Ozone 5 Maximizer.dll");
         private int vh = 0;
 
         private int stream = 0;
-        private double oldPos = 0;
+        //private double oldPos = 0;
+        float qTargetStep = 0.003f;
+        private int stepCount = 1;
+        int tolerance = 5;
+        private int curTolerance = 0;
 
         public Vst(int stream)
         {
@@ -34,8 +39,13 @@ namespace lib
             BassVst.BASS_VST_SetParam(vh, 13, 0.5f);
             BassVst.BASS_VST_SetParam(vh, 0, 0.5296182f);
         }
+        private float Float2DB(float value)
+        {
+            float v = value / 1 * 20 - 20;
+            return (float)Math.Round(v, 1);
+        }
 
-        public float Scan(float targetRMS)
+        public float Scan(float targetRMS, SCANPROC PROC)
         {
             vh = BassVst.BASS_VST_ChannelSetDSP(stream, maximazer, BASSVSTDsp.BASS_VST_DEFAULT, 1);
             SetParams();
@@ -51,21 +61,31 @@ namespace lib
                 float oldPeak = 0;
                 targetChanged = false;
 
-                Bass.BASS_ChannelPlay(stream, false);
+                //Bass.BASS_ChannelPlay(stream, false);
                 while (Bass.BASS_ChannelIsActive(stream) == BASSActive.BASS_ACTIVE_PLAYING)
                 {
-                    float[] value = Bass.BASS_ChannelGetLevels(stream, 0.02f, BASSLevel.BASS_LEVEL_RMS);
+                    int length = (int)Bass.BASS_ChannelSeconds2Bytes(stream, 0.01); // 10ms window
+                    byte[] data = new byte[length]; // 8-bit are bytes
+                    length = Bass.BASS_ChannelGetData(stream, data, length);
+
+
+
+
+                    float[] value = Bass.BASS_ChannelGetLevels(stream, 0.01f, BASSLevel.BASS_LEVEL_RMS | BASSLevel.BASS_LEVEL_ALL);
                     float result = 0;
                     if (value != null)
                         result = value[0] > value[1] ? value[0] : value[1];
 
 
                     float f = (float)Utils.LevelToDB(result, 1);//32768
+                    if (float.IsInfinity(f))
+                        f = -100;
+                    float rms = 0f;
 
                     float RMSsum = 0;
                     if (oldPeak == f)
                         continue;
-                    if (peakList.Count < 100)
+                    if (peakList.Count < 100) // 1000ms
                     {
                         peakList.Add((float)Math.Round(f, 1));
                         oldPeak = (float)Math.Round(f, 1);
@@ -74,7 +94,7 @@ namespace lib
                     {
                         for (int i = 0; i < peakList.Count; i++)
                             RMSsum += peakList[i];
-                        float rms = (float)Math.Round(RMSsum / peakList.Count, 1);
+                        rms = (float)Math.Round(RMSsum / peakList.Count, 1);
                         peakList.RemoveAt(0);
 
                         long posb = Bass.BASS_ChannelGetPosition(stream);
@@ -82,27 +102,30 @@ namespace lib
 
                         if (rms > targetRMS)
                         {
+                            if (curTolerance >= tolerance)
+                            {
+                                target += qTargetStep;
+                                if (target >= 1)
+                                    return 0;
+                                BassVst.BASS_VST_SetParam(vh, 8, target);
+                                targetChanged = true;
 
-
-                            target += 0.0005f;
-                            BassVst.BASS_VST_SetParam(vh, 8, target);
-                            targetChanged = true;
-
-                            if (poss > 10)
                                 Bass.BASS_ChannelSetPosition(stream, Bass.BASS_ChannelSeconds2Bytes(stream, poss - 1));
+                                curTolerance = 0;
+                            }
                             else
-                                Bass.BASS_ChannelSetPosition(stream, Bass.BASS_ChannelSeconds2Bytes(stream, 0));
+                                curTolerance++;
                         }
-                        else
-                            oldPos = poss;
+                        peakList.Add((float)Math.Round(f, 1));
 
                         finalTarget = target;
-                        //Thread.Sleep(10);
+                        PROC(Float2DB(target), rms);
                     }
-
                 }
                 Bass.BASS_ChannelStop(stream);
                 Bass.BASS_ChannelSetPosition(stream, 0);
+                stepCount++;
+                peakList.Clear();
             }
             while (targetChanged);
 
@@ -115,7 +138,7 @@ namespace lib
         {
             vh = BassVst.BASS_VST_ChannelSetDSP(stream, maximazer, BASSVSTDsp.BASS_VST_DEFAULT, 1);
             SetParams();
-            BassVst.BASS_VST_SetParam(vh, 8, 0.72118634f);
+            BassVst.BASS_VST_SetParam(vh, 8, 0.9690028f);
             BASS_VST_INFO vstInfo = new BASS_VST_INFO();
             Form f = new Form();
             f.Width = 640;

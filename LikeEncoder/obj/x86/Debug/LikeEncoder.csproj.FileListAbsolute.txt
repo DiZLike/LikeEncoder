@@ -206,3 +206,4 @@ C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\ob
 C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.g.resources
 C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.Properties.Resources.resources
 C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csproj.GenerateResource.Cache
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.pdb

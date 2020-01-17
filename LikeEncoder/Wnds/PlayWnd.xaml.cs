@@ -29,8 +29,6 @@ namespace LikeEncoder.Wnds
         string pospat = "{0} \\ {1}";
         TimeSpan dur = new TimeSpan();
 
-        float rmsMax = 0;
-
         public PlayWnd(List<TTag> tag)
         {
             InitializeComponent();
@@ -52,21 +50,27 @@ namespace LikeEncoder.Wnds
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            //play.Play(tags[Index].FileName);
-            play.Decode(tags[Index].FileName);
+            play.Play(tags[Index].FileName);
+            //play.Decode(tags[Index].FileName);
             play.SetVolume((int)vol.Value);
             double d = play.GetDuration();
             dur = new TimeSpan(0, 0, (int)d);
             pos.Maximum = d;
             lpos.Content = string.Format(pospat, "0:00", dur.ToString("mm':'ss"));
 
-            
+            /*
             Task.Factory.StartNew(() =>
                 {
                     v = new Vst(play.GetStream());
-                    var q = v.Scan(-7.0f);
+                    var q = v.Scan(-8.0f, OnScan);
                 });
-            
+            */
+        }
+
+        private void OnScan(float targetDB, float peakRMS)
+        {
+            Dispatcher.BeginInvoke(new Action<float>((b)
+                => this.btnVst.Content = b + " | " + peakRMS), targetDB);
         }
 
         private void btnStop_Click(object sender, RoutedEventArgs e)
@@ -101,11 +105,10 @@ namespace LikeEncoder.Wnds
 
         private void ontest(float val)
         {
+            
             Dispatcher.BeginInvoke(new Action<float>((b)
-                => this.btnVst.Content = b + " | " + rmsMax), val);
-            if (val > rmsMax || rmsMax == 0)
-                rmsMax = val;
-
+                => this.btnVst.Content = b), val);
+            
         }
 
     }
