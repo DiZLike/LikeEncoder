@@ -17,7 +17,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace LikeEncoder.Wnds
+namespace Likenc.Wnds
 {
     /// <summary>
     /// Логика взаимодействия для DemoConvWnd.xaml
@@ -81,7 +81,7 @@ namespace LikeEncoder.Wnds
             }
         }
 
-        private void OnProgress(int index, int progress)
+        private void OnProgress(int index, int progress, TimeSpan time, ProcType ptype, int pass)
         {
             allProgress[index] = progress;
             int p = 0;

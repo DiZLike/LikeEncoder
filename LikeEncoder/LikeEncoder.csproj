@@ -8,8 +8,8 @@
     <ProjectGuid>{0DA6DD59-8EAA-465D-BA01-5AB7DBEC28E4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LikeEncoder</RootNamespace>
-    <AssemblyName>LikeEncoder</AssemblyName>
+    <RootNamespace>Likenc</RootNamespace>
+    <AssemblyName>Likenc</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>

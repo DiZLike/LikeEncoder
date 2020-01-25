@@ -14,6 +14,9 @@ namespace lib.Encoders
         public int Channels { get; set; }
         public int Frequency { get; set; }
 
+        public bool MaximizerEnadled { get; set; }
+        public float? MaximizerTargetRms { get; set; }
+
         public string[] VBitrates;
         public string[] VQualityes;
         public string[] VChannels;
@@ -47,6 +50,12 @@ namespace lib.Encoders
         {
             cfg.Write(param, EncParam[param]);
         } // static
+        public void SetMaximizer()
+        {
+            Cfg cfgA = new Cfg(Cfg.APP_CFG);
+            MaximizerEnadled = cfgA.ReadBool("maximazer", false);
+            MaximizerTargetRms = cfgA.ReadInt("rms", -9);
+        }
 
         public EncoderValue()
         {

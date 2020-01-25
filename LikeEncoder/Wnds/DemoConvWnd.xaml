@@ -1,4 +1,4 @@
-﻿<Window x:Class="LikeEncoder.Wnds.DemoConvWnd"
+﻿<Window x:Class="Likenc.Wnds.DemoConvWnd"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Демо режим" Height="430" Width="427" Closing="Window_Closing">

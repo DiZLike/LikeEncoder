@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using lib;
 
-namespace LikeEncoder.Wnds
+namespace Likenc.Wnds
 {
     /// <summary>
     /// Логика взаимодействия для ConfigWnd.xaml

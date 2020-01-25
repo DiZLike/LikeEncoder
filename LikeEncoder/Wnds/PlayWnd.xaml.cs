@@ -14,7 +14,7 @@ using lib.NTrack;
 using lib;
 using System.Threading.Tasks;
 
-namespace LikeEncoder.Wnds
+namespace Likenc.Wnds
 {
     /// <summary>
     /// Логика взаимодействия для PlayWnd.xaml
@@ -24,7 +24,7 @@ namespace LikeEncoder.Wnds
         public int Index { get; set; }
         PlayApp play;
         List<TTag> tags;
-        Vst v;
+        Maximizer v;
 
         string pospat = "{0} \\ {1}";
         TimeSpan dur = new TimeSpan();
@@ -51,32 +51,16 @@ namespace LikeEncoder.Wnds
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
             play.Play(tags[Index].FileName);
-            //play.Decode(tags[Index].FileName);
             play.SetVolume((int)vol.Value);
             double d = play.GetDuration();
             dur = new TimeSpan(0, 0, (int)d);
             pos.Maximum = d;
             lpos.Content = string.Format(pospat, "0:00", dur.ToString("mm':'ss"));
-
-            /*
-            Task.Factory.StartNew(() =>
-                {
-                    v = new Vst(play.GetStream());
-                    var q = v.Scan(-8.0f, OnScan);
-                });
-            */
-        }
-
-        private void OnScan(float targetDB, float peakRMS)
-        {
-            Dispatcher.BeginInvoke(new Action<float>((b)
-                => this.btnVst.Content = b + " | " + peakRMS), targetDB);
         }
 
         private void btnStop_Click(object sender, RoutedEventArgs e)
         {
-            //play.Stop();
-            v.test();
+            play.Stop();
         }
 
         private void vol_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -94,13 +78,16 @@ namespace LikeEncoder.Wnds
 
         private void btnVst_Click(object sender, RoutedEventArgs e)
         {
-            v = new Vst(play.GetStream());
+            v = new Maximizer(play.GetStream(), 0);
+            v.Show();
+            /*
+            v = new Maximizer(play.GetStream(), 0);
             Task.Factory.StartNew(() =>
                 {
                     v.GetRMS(ontest, 10);
                 });
             v.Show();
-            
+            */
         }
 
         private void ontest(float val)

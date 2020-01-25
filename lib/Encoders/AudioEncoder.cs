@@ -19,8 +19,11 @@ namespace lib
         protected int index;
         protected int stream;
         protected int mixer;
-        //private CancellationToken token;
+        //protected bool maximizerEnadled = true;
+        //protected float? maximizerTargetRms = -8f;
         private bool cancel;
+
+        private BASSEncode encodeFlags;
 
         protected double startPos = 0;
         protected double endPos = 0;
@@ -51,10 +54,13 @@ namespace lib
             this.ev = ev;
             sbCmd = new StringBuilder();
             ev.SetEncoderValues();
+            ev.SetMaximizer();
         }
 
         protected bool CreateStream(string file, string cmd, BASSEncode encodeFlags)
         {
+            this.encodeFlags = encodeFlags;
+
             stream = Bass.BASS_StreamCreateFile(file, 0, 0, BASSFlag.BASS_SAMPLE_FLOAT | BASSFlag.BASS_STREAM_DECODE);
             if (stream == 0)
             {
@@ -73,13 +79,13 @@ namespace lib
             // set opus gain = 0
             Bass.BASS_ChannelSetAttribute(stream, (BASSAttribute)MyBASSAttribute.BASS_ATTRIB_OPUS_GAIN, 0);
 
-            enc = BassEnc.BASS_Encode_Start(mixer, cmd, encodeFlags, null, IntPtr.Zero);
-
+            //enc = BassEnc.BASS_Encode_Start(mixer, cmd, encodeFlags, null, IntPtr.Zero);
+            /*
             if (enc == 0)
             {
                 onError(new Error(IntPtr.Zero, Error.ENCODER_START));
                 return false;
-            }
+            }*/
             return true;
         }
         protected void StartEncode()
@@ -90,6 +96,16 @@ namespace lib
             double posSec = 0;
             float fendPos = 0;
             float fstartPos = 0;
+
+            if (ev.MaximizerEnadled)
+            {
+                Maximizer maximizer = new Maximizer(stream, index);
+                float val = maximizer.Scan(ev.MaximizerTargetRms.Value, onProgress, ref cancel);
+                if (val > 0)
+                    maximizer.SetMaximizer(val);
+            }
+
+            enc = BassEnc.BASS_Encode_Start(mixer, cmd, encodeFlags, null, IntPtr.Zero);
 
             byte[] _encBuffer = new byte[(int)Math.Pow(2, buffer + 4)];
             while (Bass.BASS_ChannelIsActive(mixer) == BASSActive.BASS_ACTIVE_PLAYING && !cancel)
@@ -112,7 +128,7 @@ namespace lib
                 }
 
                 if (progress % 5 == 0 || progress >= 99)
-                    onProgress(index, progress);
+                    onProgress(index, progress, new TimeSpan(), ProcType.ENCODING, 0);
             }
             Bass.BASS_StreamFree(stream);
             BassEnc.BASS_Encode_Stop(enc);
@@ -121,6 +137,7 @@ namespace lib
         public void Cancel()
         {
             cancel = true;
+            //Bass.BASS_StreamFree(stream);
         }
 
         /*

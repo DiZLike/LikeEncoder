@@ -129,11 +129,6 @@ H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder_MarkupCompile.cache
 H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.g.resources
 H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.Properties.Resources.resources
 H:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csproj.GenerateResource.Cache
-I:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe.config
-I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.exe
-I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.pdb
-I:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.exe
-I:\Code\LikeEncoder\LikeEncoder\bin\Debug\LikeEncoder.pdb
 I:\Code\LikeEncoder\LikeEncoder\bin\Debug\lib.dll
 I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.dll
 I:\Code\LikeEncoder\LikeEncoder\bin\Debug\taglib.dll
@@ -160,9 +155,6 @@ I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\LamePage.g.cs
 I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\OpusPage.g.cs
 I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Wnds\Spectrum.g.cs
 I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\App.g.cs
-I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder_MarkupCompile.cache
-I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.g.resources
-I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.Properties.Resources.resources
 I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\GenerateResource.read.1.tlog
 I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\GenerateResource.write.1.tlog
 I:\Code\LikeEncoder\LikeEncoder\bin\Debug\changes.txt
@@ -207,3 +199,11 @@ C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\ob
 C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.Properties.Resources.resources
 C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csproj.GenerateResource.Cache
 I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.pdb
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Likenc.exe.config
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Likenc_MarkupCompile.cache
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Likenc.g.resources
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Likenc.exe
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Likenc.pdb
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Likenc.exe
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Likenc.pdb
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Likenc.Properties.Resources.resources

@@ -79,7 +79,7 @@
     <Compile Include="TrackInfo\Track.cs" />
     <Compile Include="TrackInfo\TTag.cs" />
     <Compile Include="Types\values.cs" />
-    <Compile Include="Vst.cs" />
+    <Compile Include="Maximizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="changes.txt">

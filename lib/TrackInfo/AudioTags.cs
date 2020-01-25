@@ -196,13 +196,13 @@ namespace lib.NTrack
                 if (tag.TrackNo.ToInt() < 10)
                     tag.TrackNo = "0" + tag.TrackNo;
 
-            string o = pattern.Replace(artist, tag.Artist);
-            o = o.Replace(album, tag.Album);
-            o = o.Replace(title, tag.Title);
+            string o = pattern.Replace(artist, Ext.FilterSymbols(tag.Artist));
+            o = o.Replace(album, Ext.FilterSymbols(tag.Album));
+            o = o.Replace(title, Ext.FilterSymbols(tag.Title));
             if (tag.Year != null)
-                o = o.Replace(year, tag.Year);
+                o = o.Replace(year, Ext.FilterSymbols(tag.Year));
             if (tag.TrackNo != null)
-                o = o.Replace(trackno, tag.TrackNo);
+                o = o.Replace(trackno, tag.TrackNo.Split('/')[0]);
             o = o.Replace(filename, Path.GetFileNameWithoutExtension(tag.FileName));
 
             return o;
@@ -260,6 +260,8 @@ namespace lib.NTrack
                     return "FLAC";
                 case BASSChannelType.BASS_CTYPE_STREAM_MP3:
                     return "MP3";
+                case BASSChannelType.BASS_CTYPE_STREAM_APE:
+                    return "APE";
                 default:
                     return "Unknown";
             }

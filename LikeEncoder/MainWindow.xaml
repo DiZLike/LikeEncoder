@@ -1,7 +1,7 @@
-﻿<Window x:Class="LikeEncoder.MainWindow"
+﻿<Window x:Class="Likenc.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="500" Width="670" Loaded="Window_Loaded" Closing="Window_Closing" Icon="/LikeEncoder;component/audio_x_generic.ico">
+        Title="MainWindow" Height="500" Width="670" Loaded="Window_Loaded" Closing="Window_Closing" Icon="/Likenc;component/audio_x_generic.ico">
     <Grid x:Name="main">
         <Grid.RowDefinitions>
             <RowDefinition Height="25"></RowDefinition>
@@ -12,11 +12,11 @@
         </Grid.ColumnDefinitions>
         <ToolBar Grid.ColumnSpan="9">
             <Button x:Name="addBtn" Click="BtnAddTrack_Click">
-                <Image Source="/LikeEncoder;component/Images/add.png" />
+                <Image Source="/Likenc;component/Images/add.png" />
             </Button>
             <Separator></Separator>
             <Button x:Name="configBtn" Click="BtnConfig_Click">
-                <Image Source="/LikeEncoder;component/Images/preferences_system.png"></Image>
+                <Image Source="/Likenc;component/Images/preferences_system.png"></Image>
             </Button>
         </ToolBar>
         <Border x:Name="main_border" Grid.Row="1" Margin="2,2,2,2" BorderBrush="#BFBFBF" BorderThickness="1">

@@ -16,8 +16,13 @@ namespace lib
 {
     public delegate void ErrorHandler(Error error);
     public delegate void CancelHandler();
-    public delegate void ProgressHandler(int index, int progress);
+    public delegate void ProgressHandler(int index, int progress, TimeSpan time, ProcType ptype, int pass);
     public delegate void CompleteHandler();
+
+    public enum ProcType
+    {
+        RMS_SCAN, ENCODING, DECODING
+    }
 
     public enum MyBASSAttribute
     {

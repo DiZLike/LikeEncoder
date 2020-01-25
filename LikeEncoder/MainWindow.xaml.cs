@@ -4,15 +4,15 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using WinForms = System.Windows.Forms;
-using LikeEncoder.Binding;
+using Likenc.Binding;
 using Microsoft.Win32;
 using lib;
 using lib.NTrack;
-using LikeEncoder.Wnds;
+using Likenc.Wnds;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace LikeEncoder
+namespace Likenc
 {
     public delegate void ValueChangedHandler(string encoderInfo);
 
@@ -46,7 +46,7 @@ namespace LikeEncoder
             trackList.Dispatcher.BeginInvoke(new Action(() => this.progress.Value = 0));
         }
 
-        private void OnProgress(int index, int progress)
+        private void OnProgress(int index, int progress, TimeSpan time, ProcType ptype, int pass)
         {
             var trackItem = new BTrackList()
             {
@@ -56,13 +56,28 @@ namespace LikeEncoder
             };
 
             if (progress < 100)
-                trackItem.Status = progress + "%";
+            {
+                //trackItem.Status = progress + "%";
+                if (ptype == ProcType.RMS_SCAN)
+                    trackItem.Status = string.Format("{0}% RMS ({1})", progress, pass);
+                else
+                    trackItem.Status = progress + "%";
+            }
             else
             {
-                trackItem.Status = "Готово";
-                Dispatcher.BeginInvoke(new Action(() => this.progress.Value++));
+                if (ptype == ProcType.ENCODING)
+                {
+                    trackItem.Status = "Готово";
+                    Dispatcher.BeginInvoke(new Action(() => this.progress.Value++));
+                }
             }
             Dispatcher.BeginInvoke(new Action<BTrackList>((i) => trackList.Items[index] = i), trackItem);
+
+
+            this.Dispatcher.BeginInvoke(new Action<TimeSpan>((t)
+                    => this.Title = t.ToString("mm':'ss")), time);
+            
+            
         }
         private void OnLoadTags(TTag tags)
         {
@@ -253,7 +268,7 @@ namespace LikeEncoder
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadAppCfg();
-            Task.Factory.StartNew(ShowMemoryUsege);
+            //Task.Factory.StartNew(ShowMemoryUsege);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
