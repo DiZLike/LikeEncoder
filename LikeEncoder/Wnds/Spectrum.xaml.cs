@@ -17,7 +17,7 @@ using SharpGL.Enumerations;
 using System.Threading;
 using System.Drawing;
 
-namespace Likenc.Wnds
+namespace Liken.Wnds
 {
     /// <summary>
     /// Логика взаимодействия для Spectrum.xaml

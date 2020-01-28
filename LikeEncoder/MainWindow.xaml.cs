@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using WinForms = System.Windows.Forms;
-using Likenc.Binding;
-using Microsoft.Win32;
 using lib;
 using lib.NTrack;
-using Likenc.Wnds;
-using System.Threading.Tasks;
-using System.Threading;
+using Liken.Wnds;
+using Likenc.Binding;
+using Microsoft.Win32;
+using IO = System.IO;
+using WinForms = System.Windows.Forms;
+using System.Reflection;
 
-namespace Likenc
+namespace Liken
 {
     public delegate void ValueChangedHandler(string encoderInfo);
 
@@ -24,12 +26,15 @@ namespace Likenc
         private EncApp app;
         private List<TTag> _tags = new List<TTag>();
         private PlayWnd playWnd;
+        private string title;
 
         public MainWindow()
         {
             InitializeComponent();
             app = new EncApp(IntPtr.Zero, OnError, OnProgress, OnComplete, OnCancel);
             Load();
+            title = GetAppTitle();
+            this.Title = title;
         }
 
         private void OnError(Error error)
@@ -57,11 +62,12 @@ namespace Likenc
 
             if (progress < 100)
             {
-                //trackItem.Status = progress + "%";
                 if (ptype == ProcType.RMS_SCAN)
                     trackItem.Status = string.Format("{0}% RMS ({1})", progress, pass);
                 else
                     trackItem.Status = progress + "%";
+                Dispatcher.BeginInvoke(new Action<TimeSpan>((t)
+                    => this.Title = title + " | Осталось времени: " + t.ToString("mm':'ss")), time);
             }
             else
             {
@@ -70,14 +76,10 @@ namespace Likenc
                     trackItem.Status = "Готово";
                     Dispatcher.BeginInvoke(new Action(() => this.progress.Value++));
                 }
+                Dispatcher.BeginInvoke(new Action(()
+                    => this.Title = title));
             }
             Dispatcher.BeginInvoke(new Action<BTrackList>((i) => trackList.Items[index] = i), trackItem);
-
-
-            this.Dispatcher.BeginInvoke(new Action<TimeSpan>((t)
-                    => this.Title = t.ToString("mm':'ss")), time);
-            
-            
         }
         private void OnLoadTags(TTag tags)
         {
@@ -230,12 +232,27 @@ namespace Likenc
             }
         }
 
+        private string FilesFilter()
+        {
+            var formats = app.SupportedFormats;
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Audio files|");
+            for (int i = 0; i < formats.Count; i++)
+            {
+                if (i == 0)
+                    sb.Append(string.Format("*.{0}", formats[i]));
+                else
+                    sb.Append(string.Format(";*.{0}", formats[i]));
+            }
+            return sb.ToString();
+        }
+
         private void BtnAddTrack_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Multiselect = true;
             var cfg = new Cfg(Cfg.APP_CFG);
-            ofd.Filter = cfg.Read("openfiles");
+            ofd.Filter = FilesFilter();
             bool? b = ofd.ShowDialog();
             if (!b.Value) return;
             var tracks = ofd.FileNames;
@@ -248,6 +265,13 @@ namespace Likenc
             if (_tags.Count < 1 || namesFormat.Text.Length < 1) return;
             if (StartBtn.Tag.ToString() == "start")
             {
+                if (app.MaximazerEnabled)
+                {
+                    var dr = MessageBox.Show(Warning.DYCOMP, "Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (dr == MessageBoxResult.No)
+                        return;
+                }
+
                 if (outPath.Text[outPath.Text.Length - 1] != '\\')
                     outPath.Text += '\\';
                 string pattern = namesFormat.Text;
@@ -346,7 +370,21 @@ namespace Likenc
         {
             e.Effects = DragDropEffects.None;
             var files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            AddFiles(files);
+            AddFiles(FilterSupportedFile(files));
+        }
+        private string[] FilterSupportedFile(string[] files)
+        {
+            List<string> f = new List<string>();
+            for (int i = 0; i < files.Length; i++)
+            {
+                for (int y = 0; y < app.SupportedFormats.Count; y++)
+                {
+                    var ext = IO.Path.GetExtension(files[i]);
+                    if (ext == "." + app.SupportedFormats[y])
+                        f.Add(files[i]);
+                }
+            }
+            return f.ToArray();
         }
 
         private void ClearTrackBtn(object sender, RoutedEventArgs e)
@@ -370,5 +408,18 @@ namespace Likenc
             playWnd.Index = ind;
 
         }
+        private string GetAppTitle()
+        {
+            var ver = Assembly.GetExecutingAssembly().GetName().Version.ToString().Split('.');
+            var tit = Assembly.GetExecutingAssembly().GetName().Name;
+
+            var v1 = ver[0];
+            var v2 = ver[1];
+            var v3 = ver[2];
+
+            return string.Format("{0} {1}.{2} build {3}", tit, v1, v2, v3);
+
+        }
+
     }
 }

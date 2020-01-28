@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -7,12 +7,12 @@ using System.Windows;
 // Управление общими сведениями о сборке осуществляется с помощью 
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("Likenc")]
+[assembly: AssemblyTitle("Liken")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("emz")]
-[assembly: AssemblyProduct("LikeEncoder")]
-[assembly: AssemblyCopyright("Copyright © emz 2019")]
+[assembly: AssemblyCompany("DiZlike Coding")]
+[assembly: AssemblyProduct("Liken")]
+[assembly: AssemblyCopyright("Copyright © DiZlike Coding 2019 - 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Windows;
 // Можно задать все значения или принять номер построения и номер редакции по умолчанию, 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.1.1.0")]
-[assembly: AssemblyFileVersion("0.1.1.0")]
+[assembly: AssemblyVersion("0.2.11.0")]
+[assembly: AssemblyFileVersion("0.2.11.0")]

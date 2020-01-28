@@ -15,7 +15,7 @@ using lib;
 using lib.Encoders;
 using lib.Encoders.Lame;
 
-namespace Likenc.Wnds
+namespace Liken.Wnds
 {
     /// <summary>
     /// Логика взаимодействия для LamePage.xaml

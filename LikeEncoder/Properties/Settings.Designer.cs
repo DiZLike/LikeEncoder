@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Likenc.Properties {
+namespace Liken.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

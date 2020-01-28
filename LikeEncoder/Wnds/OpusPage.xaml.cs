@@ -15,7 +15,7 @@ using lib;
 using lib.Encoders;
 using lib.Encoders.Opus;
 
-namespace Likenc.Wnds
+namespace Liken.Wnds
 {
     /// <summary>
     /// Логика взаимодействия для OpusPage.xaml

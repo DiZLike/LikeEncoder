@@ -17,7 +17,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Likenc.Wnds
+namespace Liken.Wnds
 {
     /// <summary>
     /// Логика взаимодействия для DemoConvWnd.xaml

@@ -1,0 +1,5 @@
+I:\Code\LikeEncoder\Verp\obj\x86\Debug\ResolveAssemblyReference.cache
+I:\Code\LikeEncoder\Verp\bin\Debug\Verp.exe
+I:\Code\LikeEncoder\Verp\bin\Debug\Verp.pdb
+I:\Code\LikeEncoder\Verp\obj\x86\Debug\Verp.exe
+I:\Code\LikeEncoder\Verp\obj\x86\Debug\Verp.pdb

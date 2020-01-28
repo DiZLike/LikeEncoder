@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bass.Net, Version=2.4.14.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -80,6 +83,7 @@
     <Compile Include="TrackInfo\TTag.cs" />
     <Compile Include="Types\values.cs" />
     <Compile Include="Maximizer.cs" />
+    <Compile Include="Warning.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="changes.txt">
@@ -89,6 +93,13 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>call $(ProjectDir)Properties\Verp.exe</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

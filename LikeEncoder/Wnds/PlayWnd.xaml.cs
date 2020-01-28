@@ -14,7 +14,7 @@ using lib.NTrack;
 using lib;
 using System.Threading.Tasks;
 
-namespace Likenc.Wnds
+namespace Liken.Wnds
 {
     /// <summary>
     /// Логика взаимодействия для PlayWnd.xaml

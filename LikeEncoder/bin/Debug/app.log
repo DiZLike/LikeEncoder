@@ -4,3 +4,15 @@ enc\opus\opusenc --bitrate 56 --framesize 20 --comp 10 --music - "C:\Documents a
 Thread: 3 -> 0: D:\Personal\Evgeny\m\Герой Асфальта.mp3 | started: False, completed: False
 Thread: 6 -> 0: D:\Personal\Evgeny\m\Герой Асфальта.mp3 | started: True, completed: False
 enc\opus\opusenc --bitrate 56 --framesize 20 --comp 10 --music - "C:\Documents and Settings\admin\Desktop\002 - Герой Асфальта.opus"
+Thread: 12 -> 0: I:\1\Мураками - 2019 - без.даты\01 - Невыносим.ape | started: False, completed: False
+Thread: 13 -> 0: I:\1\Мураками - 2019 - без.даты\01 - Невыносим.ape | started: True, completed: False
+enc\opus\opusenc --bitrate 56 --framesize 20 --comp 10 --music - "C:\Documents and Settings\admin\Desktop\01 - Невыносим.opus"
+Thread: 12 -> 0: I:\1\Мураками - 2019 - без.даты\01 - Невыносим.ape | started: False, completed: False
+Thread: 13 -> 0: I:\1\Мураками - 2019 - без.даты\01 - Невыносим.ape | started: True, completed: False
+enc\opus\opusenc --bitrate 56 --framesize 20 --comp 10 --music - "C:\Documents and Settings\admin\Desktop\01 - Невыносим.opus"
+Thread: 7 -> 0: I:\1\Мураками - 2019 - без.даты\01 - Невыносим.ape | started: False, completed: False
+Thread: 12 -> 0: I:\1\Мураками - 2019 - без.даты\01 - Невыносим.ape | started: True, completed: False
+enc\opus\opusenc --bitrate 56 --framesize 20 --comp 10 --music - "C:\Documents and Settings\admin\Desktop\01 - Невыносим.opus"
+Thread: 12 -> 0: I:\1\Мураками - 2019 - без.даты\01 - Невыносим.ape | started: False, completed: False
+Thread: 13 -> 0: I:\1\Мураками - 2019 - без.даты\01 - Невыносим.ape | started: True, completed: False
+enc\opus\opusenc --bitrate 56 --framesize 20 --comp 10 --music - "C:\Documents and Settings\admin\Desktop\01 - Невыносим.opus"

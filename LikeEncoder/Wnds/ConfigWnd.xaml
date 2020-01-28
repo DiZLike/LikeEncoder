@@ -1,7 +1,7 @@
-﻿<Window x:Class="Likenc.Wnds.ConfigWnd"
+﻿<Window x:Class="Liken.Wnds.ConfigWnd"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Конфигурация" Height="200" Width="360" Closed="Window_Closed" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="Конфигурация" Height="244" Width="360" Closed="Window_Closed" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Border BorderBrush="#BFBFBF" BorderThickness="1" Margin="3,3,3,3">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -13,6 +13,9 @@
                 <RowDefinition Height="27"></RowDefinition>
                 <RowDefinition Height="27"></RowDefinition>
                 <RowDefinition Height="27"></RowDefinition>
+                <RowDefinition Height="27"></RowDefinition>
+                <RowDefinition Height="27"></RowDefinition>
+                <RowDefinition Height="27"></RowDefinition>
             </Grid.RowDefinitions>
             <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" TextBlock.FontWeight="Bold" Background="#DEDEDE">Параметры</Label>
             <Label Grid.Column="0" Grid.Row="1">Число потоков:</Label>
@@ -20,7 +23,20 @@
             
             <ComboBox x:Name="cores" Grid.Column="1" Grid.Row="1" Margin="3,3,3,3"></ComboBox>
             <ComboBox x:Name="buffer" Grid.Column="1" Grid.Row="2" Margin="3,3,3,3"></ComboBox>
-            <CheckBox x:Name="saveinfo" Grid.Column="1" Grid.Row="3" Margin="3,3,3,3">Сохранять информацию об источнике</CheckBox>
+            <CheckBox x:Name="saveinfo" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Margin="3,7,3,3">Сохранять информацию об источнике</CheckBox>
+
+            <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" TextBlock.FontWeight="Bold" Background="#DEDEDE">Увеличение громкости</Label>
+            <CheckBox x:Name="dycompen" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Margin="3,7,3,3">Включить DyComp</CheckBox>
+            <Label Grid.Column="0" Grid.Row="6">Уровень:</Label>
+            <ComboBox x:Name="dycomplevel" Grid.Column="1" Grid.Row="6" Margin="3,3,3,3">
+                <ComboBoxItem>L1 (Soft)</ComboBoxItem>
+                <ComboBoxItem>L2</ComboBoxItem>
+                <ComboBoxItem>L3</ComboBoxItem>
+                <ComboBoxItem>L4 (Medium)</ComboBoxItem>
+                <ComboBoxItem>L5</ComboBoxItem>
+                <ComboBoxItem>L6</ComboBoxItem>
+                <ComboBoxItem>L7 (Hard)</ComboBoxItem>
+            </ComboBox>
         </Grid>
     </Border>
 </Window>

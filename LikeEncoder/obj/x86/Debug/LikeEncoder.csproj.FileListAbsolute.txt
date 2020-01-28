@@ -133,10 +133,6 @@ I:\Code\LikeEncoder\LikeEncoder\bin\Debug\lib.dll
 I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.dll
 I:\Code\LikeEncoder\LikeEncoder\bin\Debug\taglib.dll
 I:\Code\LikeEncoder\LikeEncoder\bin\Debug\lib.pdb
-I:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.pdb
-I:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.SceneGraph.pdb
-I:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.WinForms.pdb
-I:\Code\LikeEncoder\LikeEncoder\bin\Debug\SharpGL.WPF.pdb
 I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\ResolveAssemblyReference.cache
 I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\MainWindow.baml
 I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Styles.baml
@@ -199,11 +195,11 @@ C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\ob
 C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.Properties.Resources.resources
 C:\Users\Evgeny\Documents\Visual Studio 2010\Projects\LikeEncoder\LikeEncoder\obj\x86\Debug\LikeEncoder.csproj.GenerateResource.Cache
 I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Bass.Net.pdb
-I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Likenc.exe.config
-I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Likenc_MarkupCompile.cache
-I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Likenc.g.resources
-I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Likenc.exe
-I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Likenc.pdb
-I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Likenc.exe
-I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Likenc.pdb
-I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Likenc.Properties.Resources.resources
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Liken.exe.config
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Liken.exe
+I:\Code\LikeEncoder\LikeEncoder\bin\Debug\Liken.pdb
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Liken_MarkupCompile.cache
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Liken.g.resources
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Liken.exe
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Liken.pdb
+I:\Code\LikeEncoder\LikeEncoder\obj\x86\Debug\Liken.Properties.Resources.resources

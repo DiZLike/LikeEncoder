@@ -162,35 +162,16 @@ namespace lib
         {
             if (timeThread != null)
                 timeThread.Abort();
-            timeThread = new Thread(CalculateTime);
+            timeThread = new Thread(delegate()
+                {
+                    Ext.CalculateTime(ref curPercent, out time);
+                });
             timeThread.IsBackground = false;
             timeThread.Start();
         }
         private void StopCalculateTime()
         {
             timeThread.Abort();
-        }
-        private void CalculateTime()
-        {
-            float oldPercent = 0f;
-            DateTime curTime = DateTime.Now;
-            float deltaTime;
-            while (true)
-            {
-                if (curPercent > oldPercent)
-                {
-                    deltaTime = (float)DateTime.Now.Subtract(curTime).TotalSeconds;
-                    float d1 = deltaTime / (curPercent - oldPercent);
-                    float d2 = d1 * (100 - curPercent);
-                    time = new TimeSpan(0, 0, (int)d2);
-                    oldPercent = curPercent;
-                    curTime = DateTime.Now;
-                }
-                if (oldPercent > 99)
-                    oldPercent = 0f;
-                Thread.Sleep(1000);
-                
-            }
         }
 
     }

@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using lib;
 
-namespace Likenc.Wnds
+namespace Liken.Wnds
 {
     /// <summary>
     /// Логика взаимодействия для ConfigWnd.xaml
@@ -27,6 +27,12 @@ namespace Likenc.Wnds
             LoadCores();
             LoadBuffer();
             LoadSaveInfo();
+            LoadDyComp();
+        }
+        private void LoadDyComp()
+        {
+            dycompen.IsChecked = app_cfg.ReadBool("maximazer", false);
+            dycomplevel.SelectedIndex = app_cfg.ReadInt("rms", -12) + 12;
         }
 
         private void LoadCores()
@@ -55,6 +61,8 @@ namespace Likenc.Wnds
             app_cfg.Write("cores", cores.SelectedIndex);
             app_cfg.Write("buffer", buffer.SelectedIndex);
             app_cfg.Write("saveinfo", saveinfo.IsChecked.Value);
+            app_cfg.Write("maximazer", dycompen.IsChecked.Value);
+            app_cfg.Write("rms", dycomplevel.SelectedIndex - 12);
         }
 
     }

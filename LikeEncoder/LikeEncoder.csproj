@@ -8,8 +8,8 @@
     <ProjectGuid>{0DA6DD59-8EAA-465D-BA01-5AB7DBEC28E4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Likenc</RootNamespace>
-    <AssemblyName>Likenc</AssemblyName>
+    <RootNamespace>Liken</RootNamespace>
+    <AssemblyName>Liken</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -38,6 +38,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>audio_x_generic.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Apex">
@@ -187,6 +190,13 @@
     <Resource Include="Images\preferences_system.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>call $(ProjectDir)Properties\Verp.exe</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,4 +1,4 @@
-﻿<Window x:Class="Likenc.Wnds.PlayWnd"
+﻿<Window x:Class="Liken.Wnds.PlayWnd"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="PlayWnd" Height="177" Width="300" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" Closing="Window_Closing">

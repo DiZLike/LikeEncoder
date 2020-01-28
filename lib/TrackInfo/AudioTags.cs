@@ -213,6 +213,8 @@ namespace lib.NTrack
             Tags = new TTag();
             Tags.Index = index;
             var info = BassTags.BASS_TAG_GetFromFile(file);
+            if (info == null)
+                return;
             byte[] data = new byte[1];
 
             foreach (var item in info.NativeTags)

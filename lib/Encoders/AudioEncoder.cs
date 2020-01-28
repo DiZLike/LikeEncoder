@@ -27,6 +27,8 @@ namespace lib
 
         protected double startPos = 0;
         protected double endPos = 0;
+        private float curPercent;
+        private TimeSpan time;
 
         private int enc;
         protected StringBuilder sbCmd;
@@ -35,6 +37,8 @@ namespace lib
 
         private Cfg app_cfg;
         private int buffer;
+
+        private Thread timeThread;
 
         public AudioEncoder()
         {
@@ -105,6 +109,7 @@ namespace lib
                     maximizer.SetMaximizer(val);
             }
 
+            StartCalculateTime();
             enc = BassEnc.BASS_Encode_Start(mixer, cmd, encodeFlags, null, IntPtr.Zero);
 
             byte[] _encBuffer = new byte[(int)Math.Pow(2, buffer + 4)];
@@ -118,18 +123,19 @@ namespace lib
                     Bass.BASS_ChannelStop(stream);
 
                 if (startPos == 0 && endPos == 0)
-                    progress = (int)((float)pos / (float)length * 100f);
+                    curPercent = progress = (int)((float)pos / (float)length * 100f);
                 else
                 {
                     posSec = Bass.BASS_ChannelBytes2Seconds(stream, pos);
                     fendPos = (float)endPos;
                     fstartPos = (float)startPos;
-                    progress = (int)((posSec - fstartPos) / (endPos - startPos) * 100f);
+                    curPercent = progress = (int)((posSec - fstartPos) / (endPos - startPos) * 100f);
                 }
 
                 if (progress % 5 == 0 || progress >= 99)
-                    onProgress(index, progress, new TimeSpan(), ProcType.ENCODING, 0);
+                    onProgress(index, progress, time, ProcType.ENCODING, 0);
             }
+            StopCalculateTime();
             Bass.BASS_StreamFree(stream);
             BassEnc.BASS_Encode_Stop(enc);
         }
@@ -137,13 +143,23 @@ namespace lib
         public void Cancel()
         {
             cancel = true;
-            //Bass.BASS_StreamFree(stream);
+            
+        }
+        private void StartCalculateTime()
+        {
+            if (timeThread != null)
+                timeThread.Abort();
+            timeThread = new Thread(delegate()
+            {
+                Ext.CalculateTime(ref curPercent, out time);
+            });
+            timeThread.IsBackground = false;
+            timeThread.Start();
+        }
+        private void StopCalculateTime()
+        {
+            timeThread.Abort();
         }
 
-        /*
-        public void SetPossition(double pos)
-        {
-            Bass.BASS_ChannelSetPosition(stream, Bass.BASS_ChannelSeconds2Bytes(stream, pos));
-        }*/
     }
 }

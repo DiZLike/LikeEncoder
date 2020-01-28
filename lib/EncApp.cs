@@ -61,6 +61,10 @@ namespace lib
         public AudioOpusValue _opusValue = new AudioOpusValue();
         public AudioLameValue _lameValue = new AudioLameValue();
         public int TrackCount { get { return trackList.Count; } }
+        public bool MaximazerEnabled { get; private set; }
+
+        //---------
+        public List<string> SupportedFormats { get; set; }
 
 
         public EncApp(IntPtr handle, ErrorHandler onError, ProgressHandler onProgress,
@@ -71,7 +75,6 @@ namespace lib
             this.onProgress = onProgress;
             this.onComplete = onComplete;
             this.onCancel = onCancel;
-            //token = cancelTokenSource.Token;
             app_cfg = new Cfg(Cfg.APP_CFG);
             Init();
         }
@@ -86,6 +89,13 @@ namespace lib
                 int h = Bass.BASS_PluginLoad(item);
                 _bassplugins.Add(h);
             }
+            GetSupportedFormats();
+            MaximazerEnabled = app_cfg.ReadBool("maximazer", false);
+        }
+        private void GetSupportedFormats()
+        {
+            //var cfg = new Cfg(Cfg.APP_CFG);
+            SupportedFormats = app_cfg.Read("openfiles").Split(';').ToList();
         }
         public void SetThreadCount()
         {

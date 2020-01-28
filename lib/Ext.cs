@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Controls;
 using System.IO;
+using System.Threading;
 
 namespace lib
 {
@@ -58,6 +59,28 @@ namespace lib
                     s.Append(path[x]);
             }
             return s.ToString();
+        }
+        public static void CalculateTime(ref float curPercent, out TimeSpan time)
+        {
+            float oldPercent = 0f;
+            DateTime curTime = DateTime.Now;
+            float deltaTime;
+            while (true)
+            {
+                if (curPercent > oldPercent)
+                {
+                    deltaTime = (float)DateTime.Now.Subtract(curTime).TotalSeconds;
+                    float d1 = deltaTime / (curPercent - oldPercent);
+                    float d2 = d1 * (100 - curPercent);
+                    time = new TimeSpan(0, 0, (int)d2);
+                    oldPercent = curPercent;
+                    curTime = DateTime.Now;
+                }
+                if (oldPercent > 99)
+                    oldPercent = 0f;
+                Thread.Sleep(1000);
+
+            }
         }
     }
 }
